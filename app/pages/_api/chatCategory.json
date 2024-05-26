@@ -1,0 +1,23 @@
+[
+    {
+        "id": 1,
+        "title": "Titanic Disaster",
+        "category": "titanic",
+        "aiMsg": "검색어: 타이타닉",
+        "userMsg": "타이타닉 생존자 수가 몇 명인지 알려줘."
+    },
+    {
+        "id": 2,
+        "title": "Deep Sea Exploration",
+        "category": "titanic",
+        "aiMsg": "검색어: 타이타닉",
+        "userMsg": "타이타닉 생존자 수가 몇 명인지 알려줘."
+    },
+    {
+        "id": 3,
+        "title": "Shipwrecks and Mysteries",
+        "category": "titanic",
+        "aiMsg": "검색어: 타이타닉",
+        "userMsg": "타이타닉 생존자 수가 몇 명인지 알려줘."
+    }
+]

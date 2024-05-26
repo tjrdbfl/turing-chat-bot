@@ -1,0 +1,128 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --foreground-rgb: 0, 0, 0;
+  --background-start-rgb: 214, 219, 220;
+  --background-end-rgb: 255, 255, 255;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --foreground-rgb: 255, 255, 255;
+    --background-start-rgb: 0, 0, 0;
+    --background-end-rgb: 0, 0, 0;
+  }
+}
+
+body {
+  color: rgb(var(--foreground-rgb));
+  background: linear-gradient(
+      to bottom,
+      transparent,
+      rgb(var(--background-end-rgb))
+    )
+    rgb(var(--background-start-rgb));
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+.chat_container{
+  @apply flex flex-row h-[100%] w-[100%] overflow-hidden
+  }
+  .chat_container_background{
+  @apply bg-white h-full w-full
+  }
+  .chat_container_chat_window{
+  @apply flex flex-col justify-items-center bg-white
+  h-full w-full lg:px-[23%]
+  }
+  
+  
+
+
+  .chat_header_icon{
+    @apply animate-slidein300 opacity-0 text-2xl mt-5 ml-5 mr-2 text-blue-900
+    }
+    .chat_header_text{
+    @apply animate-slidein400 opacity-0 text-2xl font-medium my-4 text-blue-900
+    }
+    
+
+.catogory_header_text{
+  @apply animate-slidein500 opacity-0 text-4xl mt-[10%] px-[5%] font-bold bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 bg-clip-text inline-block text-transparent
+}
+.catogory_header_next_text{
+  @apply animate-slidein600 opacity-0 text-slate-400 text-2xl px-[5%] mt-[4%] font-medium
+}
+
+.chat_form_header_text{
+  @apply animate-slidein300 opacity-0 text-slate-400 text-lg font-medium
+  }
+  .chat_form_container{
+  @apply animate-slidein300 opacity-0 h-[89%] flex flex-col mx-5 mt-[2%] 
+  }
+  .chat_form_text{
+  @apply h-full bg-slate-50 mx-3 rounded-2xl font-medium text-lg p-5 leading-6 text-black my-[2%]
+  }
+ 
+  .chat_form_input_container{
+  @apply  flex flex-row overflow-y-auto w-[100%] absolute bottom-0 resize-y scrollbar-hide overflow-hidden 
+  }
+  .chat_form_input_prompt{
+  @apply flex mb-2 bg-slate-50 border-0 w-full resize-y overflow-y-auto text-base leading-6 font-medium scrollbar-hide outline-none
+  }
+
+.scrollbar{
+  scrollbar-width:thin;
+  scrollbar-color:#60a5fa #eff6ff; 
+  scrollbar-rounded: 20px 20px 20px 20px;
+  scrollbar-border:20%;
+}
+.chat_form_input_div{
+  @apply w-full rounded-3xl p-2 mt-2 text-lg bg-slate-50 text-gray-900 placeholder-gray-400 outline-none
+  overflow-y-auto max-h-40 leading-5 scrollbar
+  }
+  .button_AttachFileIcon{
+  @apply inline-flex justify-center bg-slate-50 outline-none shadow-none text-blue-900 rounded-full cursor-pointer hover:bg-blue-100 hover:shadow-none hover:px-[1%] hover:py-[0.7%] mb-[0.7%]
+  }
+  .button_TelegramIcon{
+  @apply inline-flex justify-center hover:px-[1.8%] hover:py-[0.7%] text-blue-900 rounded-full cursor-pointer hover:bg-blue-100 mb-[1.3%] hover:mb-[0.5%]
+  }
+
+div:empty:before {
+  content:attr(data-placeholder);
+  color:gray
+}
+
+
+/* 
+chat catogory 가로 버전 */
+
+.chat_category_container{
+  @apply animate-slidein800 opacity-0 flex flex-row h-[300%] w-[100%] pt-[5%] md:w-[120%]
+  }
+
+.chat_catogry_button{
+  @apply text-black text-xl m-[1%] rounded-2xl p-1 w-[26%] h-[29%] bg-slate-50 shadow-lg
+  }
+
+.chat_catogry_button:hover{
+  @apply bg-blue-50
+  } 
+  .chat_catogry_button:focus{
+  @apply outline-none ring-cyan-300 dark:focus:ring-cyan-800 font-medium rounded-lg text-xl p-1 text-center 
+  }
+
+  circle,
+rect,
+line {
+  stroke-width: 10px;
+  stroke-linecap: round;
+  fill: transparent;
+}

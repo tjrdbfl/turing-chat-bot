@@ -1,0 +1,50 @@
+{
+  "name": "turing-chat-app",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "next": "14.2.3",
+    "punycode": "^2.3.1",
+    "react": "^18",
+    "react-dom": "^18",
+    "@emotion/react": "^11.11.4",
+    "@emotion/styled": "^11.11.5",
+    "@mui/icons-material": "^5.15.17",
+    "@mui/material": "5.15.17",
+    "@mui/joy": "^5.0.0-beta.39",
+    "axios": "^1.6.8",
+    "react-hook-form": "^7.51.4",
+    "tailwind-scrollbar-hide": "^1.1.7",
+    "yarn": "^1.22.22",
+    "framer-motion": "11.2.6",
+    "openai":"4.47.1",
+    "ai":"3.1.13",
+    "zod":"3.23.8",
+    "@radix-ui/react-scroll-area":"1.0.5",
+    "tailwind-merge":"^2.3.0",
+    "@prisma/client": "5.14.0",
+    "firebase": "10.12.1",
+    "@clerk/themes": "2.1.7",  
+    "@clerk/nextjs": "5.1.2",
+    "next-themes":"0.3.0",
+    "prettier": "3.2.5",
+    "eslint-config-prettier": "9.1.0",
+    "prettier-plugin-tailwindcss": "0.5.14"
+  },
+  "devDependencies": {
+    "@types/node": "^20",
+    "@types/react": "^18",
+    "@types/react-dom": "^18",
+    "eslint": "^8",
+    "eslint-config-next": "14.2.3",
+    "postcss": "^8",
+    "tailwindcss": "^3.4.1",
+    "typescript": "^5"
+  }
+}
