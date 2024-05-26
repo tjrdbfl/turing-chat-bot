@@ -35,7 +35,7 @@ export const SignUpForm = () => {
         if(response.ok){
             router.push('/pages/user/login');
         }else{
-            console.error('회원가입 실패');
+            alert('회원가입 실패하셨습니다.');
         }
     }
 

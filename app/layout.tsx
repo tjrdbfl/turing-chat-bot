@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
+import Provider from "./components/user/provider";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -10,16 +11,16 @@ export const metadata: Metadata = {
 };
 
 export default function RootLayout({
-  children,modal
+  children
 }: Readonly<{
-  children: React.ReactNode;
-  modal:React.ReactNode
+  children: React.ReactNode
 }>) {
   return (
     <html lang="en">
       <body className="h-screen w-screen">
+        <Provider>
         {children}
-        {modal}
+        </Provider>
       </body>
     </html>
   );
