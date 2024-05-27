@@ -4,16 +4,16 @@ import TemporaryDrawer from "./pages/drawer/page";
 import { NextPage } from 'next';
 import ChatPage from './pages/chat/page';
 import SignOut from './components/user/signOut';
+import { ThemeToggleBtn } from './components/drawer/themeToggleBtn';
 
 const Home: NextPage = () => {
 
   return (<>
     <div className="chat_container">
       <TemporaryDrawer />
-
       <div className="chat_container_background">
         <ChatHeader />
-        <SignOut/>
+        {/* <SignOut/> */}
         <div className="chat_container_chat_window">
 
         <ChatPage/>       

@@ -81,8 +81,6 @@ body {
 .scrollbar{
   scrollbar-width:thin;
   scrollbar-color:#60a5fa #eff6ff; 
-  scrollbar-rounded: 20px 20px 20px 20px;
-  scrollbar-border:20%;
 }
 .chat_form_input_div{
   @apply w-full rounded-3xl p-2 mt-2 text-lg bg-slate-50 text-gray-900 placeholder-gray-400 outline-none
@@ -119,10 +117,32 @@ chat catogory 가로 버전 */
   @apply outline-none ring-cyan-300 dark:focus:ring-cyan-800 font-medium rounded-lg text-xl p-1 text-center 
   }
 
-  circle,
-rect,
-line {
-  stroke-width: 10px;
-  stroke-linecap: round;
-  fill: transparent;
-}
+
+  
+  .switch {
+    width: 50px;
+    height: 30px;
+    border-radius: 100px;
+    padding: 5px;
+    display: flex;
+    cursor: pointer;
+  }
+  
+  .switch.on {
+    background-color: #172554;
+    justify-content: flex-end;
+  }
+  
+  .switch.off {
+    background-color: #dddddd;
+    justify-content: flex-start;
+  }
+  
+  .switch div {
+    width: 20px;
+    height: 20px;
+    background-color: #ffffff;
+    border-radius: 200px;
+    box-shadow: 1px 2px 3px rgba(0, 0, 0, 0.02);
+  }
+  

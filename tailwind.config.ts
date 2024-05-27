@@ -35,8 +35,9 @@ const config: Config = {
         slidein900: "slidein 1s ease 900ms forwards",
       }
     },
-    
   },
-  plugins: [ require('tailwind-scrollbar-hide')],
+  plugins: [ require('tailwind-scrollbar-hide'),
+  ],
+  darkMode:"class"
 };
 export default config;
