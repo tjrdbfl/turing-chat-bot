@@ -36,21 +36,21 @@ body {
   @apply flex flex-row h-[100%] w-[100%] overflow-hidden
   }
   .chat_container_background{
-  @apply bg-white h-full w-full
+  @apply bg-white h-full w-full dark:bg-zinc-900
   }
   .chat_container_chat_window{
   @apply flex flex-col justify-items-center bg-white
-  h-full w-full lg:px-[23%]
+  h-full w-full lg:px-[23%] dark:bg-zinc-900
   }
   
   
 
 
   .chat_header_icon{
-    @apply animate-slidein300 opacity-0 text-2xl mt-5 ml-5 mr-2 text-blue-900
+    @apply animate-slidein300 opacity-0 text-2xl mt-5 ml-5 mr-2 text-blue-900 dark:text-white
     }
     .chat_header_text{
-    @apply animate-slidein400 opacity-0 text-2xl font-medium my-4 text-blue-900
+    @apply animate-slidein400 opacity-0 text-2xl font-medium my-4 text-blue-900 dark:text-white
     }
     
 
