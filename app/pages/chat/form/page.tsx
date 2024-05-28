@@ -6,7 +6,6 @@ import ShareIcon from '@mui/icons-material/Share';
 import ContentCopyIcon from '@mui/icons-material/ContentCopy';
 import TelegramIcon from '@mui/icons-material/Telegram';
 import { ChatCategoryContext } from "@/app/components/chat/service/chat-context";
-import ChatCategory from "../category/page";
 import FileUploadBtn from "@/app/components/chat/module/file-upload";
 import { getCardVariants, getChatCategory } from "@/app/api/chat/chat-api";
 import { useChat } from 'ai/react';
@@ -125,7 +124,7 @@ const ChatForm = () => {
         <>
             <div className="h-[100%]">
                 <form onSubmit={onSubmit} id="chat" className="chat_form_container">
-                    {context.category === 0 ? <ChatCategory /> :
+                    {context.category === 0 ? 0 :
                         <div>
                                 
                             <div className="flex flex-col justify-start">

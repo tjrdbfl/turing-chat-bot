@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import ThemeProviders from "./components/drawer/service/themeProvider";
+import {ClerkProvider} from "@clerk/nextjs";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -11,17 +12,22 @@ export const metadata: Metadata = {
 };
 
 export default function RootLayout({
-  children
+  children,modal
 }: Readonly<{
-  children: React.ReactNode
+  children: React.ReactNode,
+  modal:React.ReactNode
 }>) {
   return (
+    <ClerkProvider>
     <html lang="en">
       <body className="h-screen w-screen">
         <ThemeProviders>
+        
         {children}
+        {modal}
         </ThemeProviders>
       </body>
     </html>
+    </ClerkProvider>
   );
 }

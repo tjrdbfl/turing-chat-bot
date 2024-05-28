@@ -9,7 +9,6 @@ import {signIn} from 'next-auth/react'
 import { useRouter } from "next/navigation"
 
 export const SignInform=()=>{
-    const router=useRouter();
     const form=useForm<z.infer<typeof signInSchema>>({
         resolver:zodResolver(signInSchema),
         defaultValues:{
@@ -18,18 +17,24 @@ export const SignInform=()=>{
         }
     });
 
+    const router=useRouter();
     const onSubmit=async (values:z.infer<typeof signInSchema>)=>{
-        const signInData=await signIn('credentials',{
-            email:values.email,
-            password:values.password
-        });
-        
-        if(signInData?.error){
-            alert('로그인 실패하셨습니다.');
-            console.log(signInData.error);
-        }else{
-            router.refresh();
-            router.push('/admin');
+
+        try{
+            const signInData=await signIn('credentials',{
+                email:values.email,
+                password:values.password,
+                redirect:true,
+                callbackUrl:`${window.location.origin}/chat`
+            }).then(()=>{
+                alert(JSON.stringify(signInData));
+                //router.push(`${window.location.origin}/chat`);
+            }).catch((error)=>{
+                alert(JSON.stringify(signInData));
+                alert('로그인 실패하셨습니다. 다시 로그인 해주세요.');
+            });
+        }catch{
+            
         }
     };
 
@@ -70,7 +75,9 @@ export const SignInform=()=>{
                 )}
                 />
             </div>
-            <button className="h-[50px] text-black">로그인</button>
+            <button 
+            type="submit" 
+            className="h-[50px] text-black">로그인</button>
         </form>
     </Form>
     </>);

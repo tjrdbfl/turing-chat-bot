@@ -1,9 +1,8 @@
 import * as React from 'react';
-import ChatHeader from "./components/chat/module/chat-header";
-import TemporaryDrawer from "./pages/drawer/page";
 import { NextPage } from 'next';
-import ChatPage from './pages/chat/page';
-import SignOut from './components/user/signOut';
+import ChatHeader from '../components/chat/module/chat-header';
+import ChatPage from '../pages/chat/page';
+import TemporaryDrawer from '../pages/drawer/page';
 
 const Chat: NextPage = () => {
   

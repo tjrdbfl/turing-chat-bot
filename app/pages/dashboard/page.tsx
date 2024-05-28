@@ -1,9 +1,12 @@
+import ChatHeader from '@/app/components/chat/module/chat-header';
+import { Metadata, NextPage } from 'next';
 import * as React from 'react';
-import ChatHeader from "./components/chat/module/chat-header";
-import TemporaryDrawer from "./pages/drawer/page";
-import { NextPage } from 'next';
-import ChatPage from './pages/chat/page';
-import SignOut from './components/user/signOut';
+import ChatPage from '../chat/page';
+import TemporaryDrawer from '../drawer/page';
+
+export const metadata:Metadata={
+  title:"Turing Chat - dashboard",
+}
 
 const Chat: NextPage = () => {
   

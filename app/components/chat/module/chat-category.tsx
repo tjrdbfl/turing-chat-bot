@@ -1,21 +1,21 @@
+
 import { ChatCategoryContext, ChatCategoryContextValue } from "@/app/components/chat/service/chat-context";
 import { useContext, useState } from "react";
 import { motion } from "framer-motion";
 import { getChatCategory } from "@/app/api/chat/chat-api";
+import { Session } from "next-auth";
+
 
 const ChatCategory = () => {
 
+    
     const chatCategoryList:chatCategoryList[]=getChatCategory();
-
     const context = useContext(ChatCategoryContext);
     console.log("ChatCategory: " + context.category);
 
     return (<>
         {context.category === 0 ?
             <div>
-                <p className="catogory_header_text">안녕하세요!</p>
-                <p className="catogory_header_next_text">아래 카테고리 중 하나를 선택해주세요.</p>
-
                 <motion.div className="chat_category_container"
                     animate={{ x: 100 }}
                     transition={{ ease: "easeOut", duration: 2 }}
