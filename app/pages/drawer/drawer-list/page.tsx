@@ -43,14 +43,13 @@ export default function TemporaryDrawer({ children }: { children: ReactNode }) {
         
             <button 
             onClick={toggleDrawer(true)} 
-            className="text-black hover:rounded-full hover:bg-slate-50 hover:shadow-lg hover:ring-1 hover:ring-slate-300 hover:ring-opacity-50 p-3">
-                <DensityMediumIcon />
+            className="text-black hover:rounded-full hover:bg-slate-50 hover:shadow-lg hover:ring-1 hover:ring-slate-300 hover:ring-opacity-50 p-3
+            dark:hover:bg-zinc-700 dark:hover:ring-0">
+                <DensityMediumIcon className='dark:text-white'/>
                 </button>
                 
             <Drawer
-            className=''
             open={open} onClose={toggleDrawer(false)}
-            //PaperProps={{ sx: { backgroundColor: '#27272a' } }}
             PaperProps={{
                 sx: {
                   backgroundColor: currentTheme==='dark' ? '#27272a' : '#fff', // Set background based on dark mode
@@ -59,8 +58,9 @@ export default function TemporaryDrawer({ children }: { children: ReactNode }) {
             >
                 <button
                     onClick={() => setOpen(false)}
-                    className="w-12 h-12 ml-2 mt-2 hover:rounded-full hover:bg-slate-100 hover:shadow-xl">
-                    <DensityMediumIcon />
+                    className="w-12 h-12 ml-2 mt-2 hover:rounded-full hover:bg-slate-100 hover:shadow-xl
+                    dark:hover:bg-zinc-700">
+                    <DensityMediumIcon className='dark:text-white'/>
                 </button>
 
                 <div className='w-[300px] dark:bg-zinc-800' role="presentation">
