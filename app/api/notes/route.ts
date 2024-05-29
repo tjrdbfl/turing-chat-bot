@@ -4,6 +4,7 @@ import { auth } from "@clerk/nextjs/server";
 import { DevBundlerService } from "next/dist/server/lib/dev-bundler-service";
 import { getEmbeddingForNote } from "../pinecone/chat-embedding";
 import { chatsIndex } from "@/app/lib/pinecone";
+import { getEmbedding } from "../pinecone/route";
 
 //new chat
 export async function POST(req:Request){
@@ -82,19 +83,30 @@ export async function PUT(req:Request){
 
         if(!userId || userId!==chat.userId){
             return Response.json({error:"권한이 없는 사용자입니다."},{status:401});
-        }
+        }        
 
-        
+        const embedding=await getEmbeddingForNote(title,content);
 
-        const updateNote=await db.category.update({
-            where:{id},
-            data:{
-                title,
-                content,
-            }
+        const updateChat=await db.$transaction(async(tx)=>{
+            
+            const updateChat=await tx.category.update({
+                where:{id},
+                data:{
+                    title,
+                    content,
+                }
+            });
+
+            await chatsIndex.upsert([{
+                id:String(id),
+                values:embedding,
+                metadata:{userId}
+            }])
+
+            return updateChat;
         })
-
-        return Response.json({updateNote},{status:200});
+        
+        return Response.json({updateChat},{status:200});
 
 
     }catch(error){
@@ -129,10 +141,11 @@ export async function DELETE(req:Request){
             return Response.json({error:"권한이 없는 사용자입니다."},{status:401});
         }
 
-        await db.category.delete({
-            where:{id},
+        await db.$transaction(async(tx)=>{
+            await tx.category.delete({where:{id}});
+            await chatsIndex.deleteOne(String(id));
         })
-
+     
         return Response.json({message:"채팅방 삭제 성공하셨습니다."},{status:200});
 
 
