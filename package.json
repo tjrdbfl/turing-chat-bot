@@ -45,7 +45,7 @@
     "yarn": "^1.22.22",
     "zod": "3.23.8",
     "zustand": "4.5.2",
-    "@reach/portal": "0.18.0"
+    "@pinecone-database/pinecone": "2.2.1"
   },
   "devDependencies": {
     "@types/node": "^20",

@@ -2,6 +2,8 @@ import { db } from "@/app/lib/db";
 import { CreateChatSchema, deleteChatSchema, updateChatSchema } from "@/app/schemas/notes/noteSchema";
 import { auth } from "@clerk/nextjs/server";
 import { DevBundlerService } from "next/dist/server/lib/dev-bundler-service";
+import { getEmbeddingForNote } from "../pinecone/chat-embedding";
+import { chatsIndex } from "@/app/lib/pinecone";
 
 //new chat
 export async function POST(req:Request){
@@ -16,25 +18,36 @@ export async function POST(req:Request){
         }
 
         const {title,content}=parseResult.data;
-        console.log(JSON.stringify(title)+" "+JSON.stringify(content));
-
+        
         const {userId}=auth();
 
         if(!userId){
             return Response.json({error:"권한이 없는 사용자입니다."},{status:401});
         }
 
-        console.log(JSON.stringify(userId));
-        
-        const newChat=await db.category.create({
-            data:{
-                title,
-                content,
-                userId
-            }
-        });
+        const embedding=await getEmbeddingForNote(title,content);
 
-        console.log('/api/notes');
+        const newChat=await db.$transaction(async(tx)=>{
+            //supabase에 저장
+            const newChat=await tx.category.create({
+                data:{
+                    title,
+                    content,
+                    userId
+                }
+            });
+
+            //pinecone에 저장
+            await chatsIndex.upsert([
+                {
+                    id:String(newChat.id),
+                    values:embedding,
+                    metadata:{userId},
+                }
+            ]);
+
+            return newChat;
+        });
         
         return Response.json({newChat},{status:201});
 
@@ -57,9 +70,9 @@ export async function PUT(req:Request){
 
         const {id,title,content}=parseResult.data;
         
-        const note=await db.category.findUnique({where:{id}});
+        const chat=await db.category.findUnique({where:{id}});
 
-        if(!note){
+        if(!chat){
             return Response.json({error:"존재하지 않는 채팅방입니다."},{status:404});
         }
 
@@ -67,9 +80,11 @@ export async function PUT(req:Request){
         
         const {userId}=auth();
 
-        if(!userId || userId!==note.userId){
+        if(!userId || userId!==chat.userId){
             return Response.json({error:"권한이 없는 사용자입니다."},{status:401});
         }
+
+        
 
         const updateNote=await db.category.update({
             where:{id},

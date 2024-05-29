@@ -57,7 +57,7 @@ export const ChatModal = ({ open, setOpen, onSubmit, category }
                                         <FormControl>
                                             <div>
                                                 <input
-                                                    className='border-2 border-slate-300 w-full rounded-md text-lg p-2 dark:text-white
+                                                    className='border-2 border-slate-300 w-full rounded-md text-lg text-black p-2 dark:text-white
                                                 dark:border-zinc-800'
                                                     placeholder="제목을 입력해주세요." {...field} />
 
@@ -76,8 +76,7 @@ export const ChatModal = ({ open, setOpen, onSubmit, category }
                                         <FormControl>
                                             <div>
                                             <textarea 
-                                    className='w-full dark:text-white'
-                                    style={{fontSize:18,padding:10,height:180,borderRadius:10,borderWidth:2,borderColor:'#cbd5e1', marginBottom:20}}
+                                    className='w-full h-[180px] text-black border-2 border-slate-300 rounded-lg p-2 text-lg dark:text-white dark:border-0'
                                     placeholder="세부사항을 입력해주세요." {...field} />
                                             </div>
                                         </FormControl>

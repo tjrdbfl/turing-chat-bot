@@ -52,11 +52,13 @@ export const DeleteModal = ({ open, setOpen,id }:
                 <div className='flex flex-row w-full mt-7 ml-[67%] gap-x-4'>
 
                     <button
-                        className='text-blue-500 text-xl p-3 hover:rounded-full hover:bg-blue-50'
+                        className='text-blue-500 text-xl p-3 hover:rounded-full hover:bg-blue-50
+                        dark:hover:bg-zinc-600'
                         onClick={onClick}>삭제</button>
 
                     <button
-                        className='text-blue-500 text-xl p-3 hover:rounded-full hover:bg-blue-50'
+                        className='text-blue-500 text-xl p-3 hover:rounded-full hover:bg-blue-50
+                        dark:hover:bg-zinc-600'
                         onClick={() => setOpen(false)}
                     >취소</button>
                 </div>

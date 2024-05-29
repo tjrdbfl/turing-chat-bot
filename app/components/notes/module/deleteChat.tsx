@@ -7,27 +7,6 @@ export const DeleteChat=({id}
 )=>{
     const [open, setOpen] = useState<boolean>(false);
     
-    const onClick=async(id:number)=>{
-        setOpen(false);
-        const response = await fetch('/api/notes', {
-          method: 'DELETE',
-          headers: {
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify({
-            id:id
-          })
-        })
-    
-        if (response.ok) {
-          alert('채팅창 생성 성공');
-        } else {
-          alert('채팅창 생성 실패하셨습니다. 다시 시도해주세요.');
-        }
-    
-        window.location.reload();
-    }
-
     return(<>
     <Fragment>
     <button 
