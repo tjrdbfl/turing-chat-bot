@@ -1,9 +1,12 @@
 import { AllChat } from "@/app/components/notes/service/allChat";
 import TemporaryDrawer from "./drawer-list/page";
-import { NextPage } from "next";
+import { Metadata, NextPage } from "next";
+
+export const metadata:Metadata={
+  title:"Turing Chat - Drawer",
+}
 
 const Drawerpage:NextPage=()=>{
-
 
   return (
     <>

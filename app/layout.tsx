@@ -18,11 +18,13 @@ export default function RootLayout({
   modal:React.ReactNode
 }>) {
   return (
-    <ClerkProvider>
+    <ClerkProvider
+    signInFallbackRedirectUrl="/pages/dashboard"
+    signUpFallbackRedirectUrl="/pages/dashboard"
+    >
     <html lang="en">
       <body className="h-screen w-screen">
         <ThemeProviders>
-        
         {children}
         {modal}
         </ThemeProviders>

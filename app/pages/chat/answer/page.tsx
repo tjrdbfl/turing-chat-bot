@@ -25,7 +25,7 @@ const Answer=({id,isLoading,messages}:{id:number,isLoading:boolean,messages:stri
             >
                 <AutoAwesomeIcon className="text-lg mb-2" />
             </motion.div>
-            <h4 className="chat_form_text">
+            <h4 className="text-black text-lg dark:text-white">
             {messages}
             </h4>
             </div>

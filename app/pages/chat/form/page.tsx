@@ -7,11 +7,12 @@ import ContentCopyIcon from '@mui/icons-material/ContentCopy';
 import TelegramIcon from '@mui/icons-material/Telegram';
 import { ChatCategoryContext } from "@/app/components/chat/service/chat-context";
 import FileUploadBtn from "@/app/components/chat/module/file-upload";
-import { getCardVariants, getChatCategory } from "@/app/api/chat/chat-api";
+import { getChatCategory } from "@/app/api/chat/chat-api";
 import { useChat } from 'ai/react';
 import { Variants, motion, useScroll } from "framer-motion";
 import Answer from "../answer/page";
-import { ScrollArea } from "@/app/components/ui/scrollarea"
+import { ScrollArea, ScrollBar } from "@/app/components/ui/scrollarea"
+import ChatCategory from "../category/page";
 
 export const messages = [
     "function onSubmit(e: React.FormEvent<HTMLFormElement>) {e.preventDefault(); handleSubmit(e);}",
@@ -103,7 +104,6 @@ export const messages = [
 const ChatForm = () => {
     const context = useContext(ChatCategoryContext);
 
-    const cardVariants: Variants = getCardVariants();
     const chatCategoryList: chatCategoryList[] = getChatCategory();
 
     //const { messages, input, handleInputChange, handleSubmit, isLoading, error } = useChat();
@@ -124,7 +124,7 @@ const ChatForm = () => {
         <>
             <div className="h-[100%]">
                 <form onSubmit={onSubmit} id="chat" className="chat_form_container">
-                    {context.category === 0 ? 0 :
+                    {context.category === 0 ? <ChatCategory/> :
                         <div>
                                 
                             <div className="flex flex-col justify-start">
@@ -167,6 +167,7 @@ const ChatForm = () => {
                                         </>
 
                                     ))}
+                                    <ScrollBar orientation="vertical" />
                                 </ScrollArea>
                             </div>
 

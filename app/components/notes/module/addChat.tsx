@@ -1,7 +1,7 @@
 'use client';
 import AddIcon from '@mui/icons-material/Add';
 import * as React from 'react';
-import { CreateChatSchema } from '@/app/schemas/notes/noteSchema';
+import { CreateChatSchema } from '@/app/schemas/chat/chatSchema';
 import { useState,Fragment } from 'react';
 import { ChatModal } from './chatModal';
 

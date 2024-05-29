@@ -47,10 +47,10 @@ body {
 
 
   .chat_header_icon{
-    @apply animate-slidein300 opacity-0 text-2xl mt-5 ml-5 mr-2 text-blue-900 dark:text-white
+    @apply animate-slidein300 opacity-0 text-2xl mt-5 ml-4 dark:ml-3 mr-2 text-blue-600
     }
     .chat_header_text{
-    @apply animate-slidein400 opacity-0 text-2xl font-medium my-4 text-blue-900 dark:text-white
+    @apply animate-slidein400 opacity-0 text-2xl font-medium my-4 text-blue-600
     }
     
 
@@ -58,7 +58,7 @@ body {
   @apply animate-slidein500 opacity-0 text-4xl mt-[10%] px-[5%] font-bold bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 bg-clip-text inline-block text-transparent
 }
 .catogory_header_next_text{
-  @apply animate-slidein600 opacity-0 text-slate-400 text-2xl px-[5%] mt-[4%] font-medium
+  @apply animate-slidein600 opacity-0 text-zinc-400 text-2xl px-[5%] mt-[4%] font-medium
 }
 
 .chat_form_header_text{
@@ -68,23 +68,19 @@ body {
   @apply animate-slidein300 opacity-0 h-[89%] flex flex-col mx-5 mt-[2%] 
   }
   .chat_form_text{
-  @apply h-full bg-slate-50 mx-3 rounded-2xl font-medium text-lg p-5 leading-6 text-black my-[2%]
+  @apply h-full bg-slate-50 mx-3 mr-5 rounded-2xl font-medium text-lg p-5 leading-6 text-black my-[2%]
   }
  
   .chat_form_input_container{
-  @apply  flex flex-row overflow-y-auto w-[100%] absolute bottom-0 resize-y scrollbar-hide overflow-hidden 
+  @apply  flex flex-row overflow-y-auto w-[100%] absolute bottom-0 resize-y 
   }
   .chat_form_input_prompt{
-  @apply flex mb-2 bg-slate-50 border-0 w-full resize-y overflow-y-auto text-base leading-6 font-medium scrollbar-hide outline-none
+  @apply flex mb-2 bg-slate-50 border-0 w-full resize-y overflow-y-auto text-base leading-6 font-medium 
   }
 
-.scrollbar{
-  scrollbar-width:thin;
-  scrollbar-color:#60a5fa #eff6ff; 
-}
 .chat_form_input_div{
-  @apply w-full rounded-3xl p-2 mt-2 text-lg bg-slate-50 text-gray-900 placeholder-gray-400 outline-none
-  overflow-y-auto max-h-40 leading-5 scrollbar
+  @apply w-full rounded-3xl p-2 mt-2 text-lg bg-slate-50 text-gray-900 placeholder-gray-400
+  overflow-y-auto max-h-40 leading-5
   }
   .button_AttachFileIcon{
   @apply inline-flex justify-center bg-slate-50 outline-none shadow-none text-blue-900 rounded-full cursor-pointer hover:bg-blue-100 hover:shadow-none hover:px-[1%] hover:py-[0.7%] mb-[0.7%]
@@ -107,11 +103,11 @@ chat catogory 가로 버전 */
   }
 
 .chat_catogry_button{
-  @apply text-black text-xl m-[1%] rounded-2xl p-1 w-[26%] h-[29%] bg-slate-50 shadow-lg
+  @apply text-black text-xl m-[1%] rounded-2xl p-1 w-[26%] h-[29%] bg-slate-50 shadow-lg dark:bg-zinc-800 dark:text-white
   }
 
 .chat_catogry_button:hover{
-  @apply bg-blue-50
+  @apply bg-blue-50 dark:bg-zinc-700
   } 
   .chat_catogry_button:focus{
   @apply outline-none ring-cyan-300 dark:focus:ring-cyan-800 font-medium rounded-lg text-xl p-1 text-center 
@@ -122,14 +118,14 @@ chat catogory 가로 버전 */
   .switch {
     width: 50px;
     height: 30px;
+    padding: 4px;
     border-radius: 100px;
-    padding: 5px;
     display: flex;
     cursor: pointer;
   }
   
   .switch.on {
-    background-color: #71717a;
+    background-color: #2563eb;
     justify-content: flex-end;
   }
   
@@ -139,8 +135,8 @@ chat catogory 가로 버전 */
   }
   
   .switch div {
-    width: 20px;
-    height: 20px;
+    width: 23px;
+    height: 23px;
     background-color: #ffffff;
     border-radius: 200px;
     box-shadow: 1px 2px 3px rgba(0, 0, 0, 0.02);

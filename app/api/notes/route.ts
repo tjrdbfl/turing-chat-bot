@@ -1,5 +1,5 @@
 import { db } from "@/app/lib/db";
-import { CreateChatSchema, deleteChatSchema, updateChatSchema } from "@/app/schemas/notes/noteSchema";
+import { CreateChatSchema, deleteChatSchema, updateChatSchema } from "@/app/schemas/chat/chatSchema";
 import { auth } from "@clerk/nextjs/server";
 import { DevBundlerService } from "next/dist/server/lib/dev-bundler-service";
 import { getEmbeddingForNote } from "../pinecone/chat-embedding";

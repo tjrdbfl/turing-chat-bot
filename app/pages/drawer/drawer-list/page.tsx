@@ -37,7 +37,7 @@ export default function TemporaryDrawer({ children }: { children: ReactNode }) {
 
     const { systemTheme, theme } = useTheme();
     const currentTheme = theme === "system" ? systemTheme : theme;
-    
+
     return (
         <>
         

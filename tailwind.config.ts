@@ -36,7 +36,7 @@ const config: Config = {
       }
     },
   },
-  plugins: [ require('tailwind-scrollbar-hide'),
+  plugins: [
   ],
   darkMode:"class"
 };

@@ -1,5 +1,5 @@
 'use client';
-import { CreateChatSchema } from '@/app/schemas/notes/noteSchema';
+import { CreateChatSchema } from '@/app/schemas/chat/chatSchema';
 import { zodResolver } from '@hookform/resolvers/zod';
 import CreateIcon from '@mui/icons-material/Create';
 import { Fragment, useState } from 'react';

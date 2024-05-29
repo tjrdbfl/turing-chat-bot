@@ -1,7 +1,7 @@
 'use client';
 import Modal from '@mui/joy/Modal';
 import { useForm } from 'react-hook-form';
-import { CreateChatSchema } from '@/app/schemas/notes/noteSchema';
+import { CreateChatSchema } from '@/app/schemas/chat/chatSchema';
 import { Form, FormControl, FormField, FormItem, FormMessage } from "../../ui/form";
 import { zodResolver } from '@hookform/resolvers/zod';
 import { Category } from '@prisma/client';
