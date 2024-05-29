@@ -2,10 +2,12 @@
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 import { Box, Modal, Popover } from '@mui/material';
 import { useState, MouseEvent } from 'react';
-import { ChangeChat } from './changeChat';
+import { UpdateChat } from './updateChatBtn';
 import { DeleteChat } from './deleteChat';
+import { db } from '@/app/lib/db';
+import { Category } from '@prisma/client';
 
-export const ChatInfoBtn = ({ id }: { id: number }) => {
+export const ChatInfoBtn = ({ category }: { category: Category }) => {
 
   const [anchorEl, setAnchorEl] = useState<HTMLButtonElement | null>(null);
 
@@ -20,6 +22,7 @@ export const ChatInfoBtn = ({ id }: { id: number }) => {
   const open = Boolean(anchorEl);
   const popOverId = open ? 'simple-popover' : undefined;
 
+  
   return (<>
     <button
       onClick={handleClick}
@@ -41,8 +44,8 @@ export const ChatInfoBtn = ({ id }: { id: number }) => {
         horizontal: 'left',
       }}
     >
-      <ChangeChat />
-      <DeleteChat />
+      <UpdateChat category={category}/>
+      <DeleteChat id={category.id}/>
     </Popover>
   </>);
 }

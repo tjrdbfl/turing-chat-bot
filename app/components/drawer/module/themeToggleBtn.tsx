@@ -10,6 +10,7 @@ export const ThemeToggleBtn=()=>{
 
     const { systemTheme, theme, setTheme } = useTheme();
     const currentTheme = theme === "system" ? systemTheme : theme;
+    
     const className = `switch ${currentTheme==='dark' ? "on" : "off"}`;
 
     return(<>

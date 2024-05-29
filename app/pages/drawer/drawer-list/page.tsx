@@ -6,7 +6,7 @@ import { ThemeToggleBtn } from '@/app/components/drawer/module/themeToggleBtn';
 import Setting from '@/app/components/drawer/module/settings';
 import Help from '@/app/components/drawer/module/help';
 import SignOut from '@/app/components/user/signOut';
-import { NewChatBtn } from '@/app/components/notes/module/newChat';
+import { AddChatBtn } from '@/app/components/notes/module/addChat';
 
 
 import { createTheme } from '@mui/material/styles';
@@ -64,7 +64,7 @@ export default function TemporaryDrawer({ children }: { children: ReactNode }) {
                 </button>
 
                 <div className='w-[300px] dark:bg-zinc-800' role="presentation">
-                    <NewChatBtn />
+                    <AddChatBtn />
                     {children}
                     <div className='fixed bottom-0 dark:bg-zinc-800'>
 

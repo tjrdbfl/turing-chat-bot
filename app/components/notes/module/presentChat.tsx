@@ -14,14 +14,14 @@ export const PresentChat = ({ category }: { category: CategoryModel }) => {
         onMouseEnter={() => setShowMoreIcon(true)} // Show icon on hover
         onMouseLeave={() => setShowMoreIcon(false)} // Hide icon on leave
       >
-        <ChatBubbleOutlineIcon className="mx-4 text-slate-600 dark:text-white" />
-        <div className="text-lg mr-2 dark:text-md text-slate-700 dark:text-white">
+        <ChatBubbleOutlineIcon className="mx-4 text-black dark:text-white" />
+        <div className="text-lg mr-2 dark:text-md text-black dark:text-white">
           {category.title.length <= 9
             ? category.title
             : category.title.substring(0, 9) + "..."}
         </div>
         {showMoreIcon && ( 
-          <ChatInfoBtn id={category.id}/>
+          <ChatInfoBtn category={category}/>
         )}
       </div>
     </>

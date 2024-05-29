@@ -4,10 +4,10 @@ import { NextPage } from "next";
 
 const Drawerpage:NextPage=()=>{
 
+
   return (
     <>
-    <span className="bg-slate-100 p-2 dark:bg-zinc-800">
-    
+    <span className="bg-slate-100 p-2 dark:bg-zinc-900">
     <TemporaryDrawer>
       <AllChat/>
     </TemporaryDrawer>
