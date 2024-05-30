@@ -7,26 +7,7 @@ import Setting from '@/app/components/drawer/module/settings';
 import Help from '@/app/components/drawer/module/help';
 import SignOut from '@/app/components/user/signOut';
 import { AddChatBtn } from '@/app/components/notes/module/addChat';
-
-
-import { createTheme } from '@mui/material/styles';
-import { useMediaQuery } from '@mui/material';
-import { useTheme } from 'next-themes';
-
-const theme = createTheme({
-  palette: {
-    // ... 기타 테마 설정
-  },
-  components: {
-    MuiDrawer: {
-      styleOverrides: {
-        root: {
-          className: 'dark:bg-gray-800',
-        },
-      },
-    },
-  },
-});
+import { CurrentTheme } from '@/app/components/drawer/service/currentTheme';
 
 export default function TemporaryDrawer({ children }: { children: ReactNode }) {
 
@@ -34,9 +15,6 @@ export default function TemporaryDrawer({ children }: { children: ReactNode }) {
     const toggleDrawer = (newOpen: boolean) => () => {
         setOpen(newOpen);
     };
-
-    const { systemTheme, theme } = useTheme();
-    const currentTheme = theme === "system" ? systemTheme : theme;
 
     return (
         <>
@@ -52,7 +30,7 @@ export default function TemporaryDrawer({ children }: { children: ReactNode }) {
             open={open} onClose={toggleDrawer(false)}
             PaperProps={{
                 sx: {
-                  backgroundColor: currentTheme==='dark' ? '#27272a' : '#fff', // Set background based on dark mode
+                  backgroundColor: CurrentTheme()==='dark' ? '#27272a' : '#fff', // Set background based on dark mode
                 },
               }}
             >

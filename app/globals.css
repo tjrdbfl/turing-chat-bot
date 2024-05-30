@@ -47,10 +47,10 @@ body {
 
 
   .chat_header_icon{
-    @apply animate-slidein300 opacity-0 text-2xl mt-5 ml-4 dark:ml-3 mr-2 text-blue-600
+    @apply animate-slidein300 opacity-0 text-2xl mt-5 ml-4 dark:ml-0 mr-2 text-blue-700
     }
     .chat_header_text{
-    @apply animate-slidein400 opacity-0 text-2xl font-medium my-4 text-blue-600
+    @apply animate-slidein400 opacity-0 text-2xl font-medium my-4 text-blue-700 dark:text-blue-600
     }
     
 
@@ -82,11 +82,9 @@ body {
   @apply w-full rounded-3xl p-2 mt-2 text-lg bg-slate-50 text-gray-900 placeholder-gray-400
   overflow-y-auto max-h-40 leading-5
   }
-  .button_AttachFileIcon{
-  @apply inline-flex justify-center bg-slate-50 outline-none shadow-none text-blue-900 rounded-full cursor-pointer hover:bg-blue-100 hover:shadow-none hover:px-[1%] hover:py-[0.7%] mb-[0.7%]
-  }
+ 
   .button_TelegramIcon{
-  @apply inline-flex justify-center hover:px-[1.8%] hover:py-[0.7%] text-blue-900 rounded-full cursor-pointer hover:bg-blue-100 mb-[1.3%] hover:mb-[0.5%]
+  @apply  rounded-full p-[1%] text-blue-900 hover:bg-blue-50 dark:text-white dark:hover:bg-zinc-700
   }
 
 div:empty:before {
@@ -118,7 +116,7 @@ chat catogory 가로 버전 */
   .switch {
     width: 50px;
     height: 30px;
-    padding: 4px;
+    padding: 3.5px;
     border-radius: 100px;
     display: flex;
     cursor: pointer;

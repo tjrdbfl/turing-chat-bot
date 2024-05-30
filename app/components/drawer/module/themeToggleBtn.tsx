@@ -5,9 +5,9 @@ import { useTheme } from "next-themes";
 
 export const ThemeToggleBtn=()=>{
 
-    const { systemTheme, theme, setTheme } = useTheme();
+    const { theme, setTheme } = useTheme();
    
-    const currentTheme = theme === "system" ? systemTheme : theme;
+    const currentTheme =theme;
 
     const className = `switch ${currentTheme==='dark' ? "on" : "off"}`;
 

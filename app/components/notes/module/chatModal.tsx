@@ -6,7 +6,7 @@ import { Form, FormControl, FormField, FormItem, FormMessage } from "../../ui/fo
 import { zodResolver } from '@hookform/resolvers/zod';
 import { Category } from '@prisma/client';
 import SwitchAccessShortcutAddIcon from '@mui/icons-material/SwitchAccessShortcutAdd';
-import { useTheme } from 'next-themes';
+import { CurrentTheme } from '../../drawer/service/currentTheme';
 
 
 export const ChatModal = ({ open, setOpen, onSubmit, category }
@@ -16,10 +16,7 @@ export const ChatModal = ({ open, setOpen, onSubmit, category }
         , onSubmit: (values: CreateChatSchema) => void
         , category?: Category
     }) => {
-
-    const { systemTheme, theme } = useTheme();
-    const currentTheme = theme === "system" ? systemTheme : theme;
-    
+   
     const form = useForm<CreateChatSchema>(
         {
             resolver: zodResolver(CreateChatSchema),
@@ -88,7 +85,7 @@ export const ChatModal = ({ open, setOpen, onSubmit, category }
                         <button className="mt-5 w-full h-16 relative inline-flex items-center justify-center p-[3px] me-2 overflow-hidden text-xl font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-purple-600 to-blue-500 group-hover:from-purple-600 group-hover:to-blue-500 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800
                         hover:opacity-85"
                             type='submit'>
-                                {currentTheme==='dark' ?
+                                {CurrentTheme()==='dark' ?
                                 <span className="w-full relative px-5 py-3.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0">
                                 Submit    
                                 </span> 
