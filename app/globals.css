@@ -44,12 +44,13 @@ body {
     text-wrap: balance;
   }
   .box::before{
-    @apply content-[''] absolute bg-[conic-gradient(#04b0ee_20deg,transparent_120deg)] w-[300px] h-[300px]
+    @apply content-[''] absolute bg-[conic-gradient(#3b82f6_20deg,transparent_120deg)] w-[900px] h-[900px]
     top-[-25%] left-[-25%] fullSpin
   }
   .box::after{
-    @apply content-['Turing_Chat'] text-white w-[94%] h-[94%] bg-[#020223] 
-    absolute top-[3%] left-[3%] flex justify-center items-center tracking-[2px] font-medium text-3xl
+    @apply  w-[94%] h-[94%] 
+    absolute top-[3%] left-[3%] flex justify-center items-center tracking-[2px] font-medium text-4xl font-serif
+    
   }
 }
 
@@ -73,10 +74,10 @@ body {
 
 
   .chat_header_icon{
-    @apply animate-slidein300 opacity-0 text-2xl mt-5 ml-4 dark:ml-0 mr-2 text-blue-700
+    @apply animate-slidein300 opacity-0 text-2xl mt-5 ml-4 dark:ml-0 mr-2 text-blue-500
     }
     .chat_header_text{
-    @apply animate-slidein400 opacity-0 text-2xl font-medium my-4 text-blue-700 dark:text-blue-600
+    @apply animate-slidein400 opacity-0 text-2xl font-medium my-4 text-blue-500 dark:text-blue-500
     }
     
 
@@ -110,7 +111,7 @@ body {
   }
  
   .button_TelegramIcon{
-  @apply  rounded-full p-[1%] text-blue-900 hover:bg-blue-50 dark:text-white dark:hover:bg-zinc-700
+  @apply  rounded-full p-[1%] text-blue-900 hover:bg-blue-50 dark:text-zinc-400 dark:hover:bg-zinc-700
   }
 
 div:empty:before {
@@ -165,4 +166,39 @@ chat catogory 가로 버전 */
     border-radius: 200px;
     box-shadow: 1px 2px 3px rgba(0, 0, 0, 0.02);
   }
+
+
+  .typing-demo-header {
+    width: 23ch;
+    animation: typing 2s steps(22), blink .5s step-end infinite alternate;
+    white-space: nowrap;
+    overflow: hidden;
+    border-right: 3px solid;
+    font-family: serif;
+    font-size: 5em;
+  }
+
+  .typing-demo-sub-header {
+    width: 23ch;
+    animation: typing 2s steps(8), blink .5s step-end infinite alternate;
+    white-space: nowrap;
+    overflow: hidden;
+    border-right: 3px solid;
+    font-family: serif;
+    font-size: 3rem;
+  }
   
+  @keyframes typing {
+    from {
+      width: 0ch
+    }
+  }
+      
+  @keyframes blink {
+    50% {
+      border-color: transparent
+    }
+  }
+  
+
+ 
