@@ -26,10 +26,36 @@ body {
     rgb(var(--background-start-rgb));
 }
 
+@keyframes fullSpin {
+  from {
+    transform: rotate(0deg); /* Start at 0 degrees rotation */
+  }
+  to {
+    transform: rotate(-360deg); /* End at -360 degrees for full spin */
+  }
+}
+
+.fullSpin {
+  animation: fullSpin 3s linear infinite; /* Apply the animation */
+}
+
 @layer utilities {
   .text-balance {
     text-wrap: balance;
   }
+  .box::before{
+    @apply content-[''] absolute bg-[conic-gradient(#04b0ee_20deg,transparent_120deg)] w-[300px] h-[300px]
+    top-[-25%] left-[-25%] fullSpin
+  }
+  .box::after{
+    @apply content-['Turing_Chat'] text-white w-[94%] h-[94%] bg-[#020223] 
+    absolute top-[3%] left-[3%] flex justify-center items-center tracking-[2px] font-medium text-3xl
+  }
+}
+
+.fullSpin {
+  transform: rotate(-360deg);
+  animation: fullSpin 3s linear infinite;
 }
 
 .chat_container{
