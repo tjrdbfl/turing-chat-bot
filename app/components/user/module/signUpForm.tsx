@@ -3,8 +3,8 @@ import { signUpSchema } from "@/app/schemas/user/signUpSchema"
 import { useForm } from "react-hook-form"
 import { z } from "zod"
 import { zodResolver } from '@hookform/resolvers/zod';
-import { Form,FormControl, FormField, FormItem, FormMessage } from "../ui/form";
-import { Input } from "../ui/input";
+import { Form,FormControl, FormField, FormItem, FormMessage } from "../../ui/form";
+import { Input } from "../../ui/input";
 import { useRouter } from "next/navigation";
 
 export const SignUpForm = () => {

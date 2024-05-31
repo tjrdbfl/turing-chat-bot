@@ -3,8 +3,8 @@ import { signInSchema } from "@/app/schemas/user/signInSchema"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
 import { z } from "zod"
-import { Form,FormControl, FormField, FormItem, FormMessage } from "../ui/form"
-import { Input } from "../ui/input"
+import { Form,FormControl, FormField, FormItem, FormMessage } from "../../ui/form"
+import { Input } from "../../ui/input"
 import {signIn} from 'next-auth/react'
 import { useRouter } from "next/navigation"
 

@@ -5,7 +5,7 @@ import DensityMediumIcon from '@mui/icons-material/DensityMedium';
 import { ThemeToggleBtn } from '@/app/components/drawer/module/themeToggleBtn';
 import Setting from '@/app/components/drawer/module/settings';
 import Help from '@/app/components/drawer/module/help';
-import SignOut from '@/app/components/user/signOut';
+import SignOut from '@/app/components/user/module/signOut';
 import { AddChatBtn } from '@/app/components/notes/module/addChat';
 import { CurrentTheme } from '@/app/components/drawer/service/currentTheme';
 

@@ -1,4 +1,4 @@
-import ChatHeader from '@/app/components/chat/module/chat-header';
+import ChatHeader from '@/app/components/chat/module/chatHeader';
 import { Metadata, NextPage } from 'next';
 import * as React from 'react';
 import ChatPage from '../chat/page';

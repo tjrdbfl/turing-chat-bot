@@ -2,6 +2,7 @@ import { ChatCategoryContext, ChatCategoryContextValue } from "@/app/components/
 import { useContext, useState } from "react";
 import { motion } from "framer-motion";
 import { getChatCategory } from "@/app/api/chat/chat-api";
+import FindCurrentUser from "@/app/components/user/service/currentUserInfo";
 
 const ChatCategory = () => {
 
@@ -13,8 +14,8 @@ const ChatCategory = () => {
     return (<>
         {context.category === 0 ?
             <div>
-                <p className="catogory_header_text">안녕하세요!</p>
-                <p className="catogory_header_next_text">아래 카테고리 중 하나를 선택해주세요.</p>
+                <p className="catogory_header_text">{FindCurrentUser()?.firstName}님, 안녕하세요!</p>
+                <p className="catogory_header_next_text">처음이신가요? 무엇을 도와드릴까요?</p>
 
                 <motion.div className="chat_category_container"
                     animate={{ x: 100 }}

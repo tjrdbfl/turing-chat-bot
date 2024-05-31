@@ -1,7 +1,6 @@
 'use client';
 import { useAuth } from '@clerk/nextjs'
 import supabase from '../lib/supabaseClient'
-import { db } from '../lib/db';
 
 export default function Home() {
   const { getToken } = useAuth()
@@ -29,3 +28,4 @@ export default function Home() {
     </button>
   )
 }
+
