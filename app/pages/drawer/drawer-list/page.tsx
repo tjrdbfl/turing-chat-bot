@@ -43,6 +43,7 @@ export default function TemporaryDrawer({ children }: { children: ReactNode }) {
 
                 <div className='w-[300px] dark:bg-zinc-800' role="presentation">
                     <AddChatBtn />
+                    
                     {children}
                     <div className='fixed bottom-0 dark:bg-zinc-800'>
 

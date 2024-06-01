@@ -18,6 +18,7 @@ export default function RootLayout({
   modal:React.ReactNode
 }>) {
   return (
+    
     <ClerkProvider
     signInFallbackRedirectUrl="/pages/chat"
     signUpFallbackRedirectUrl="/pages/chat"

@@ -2,25 +2,29 @@ import { db } from "@/app/lib/db";
 import { auth } from "@clerk/nextjs/server";
 import { PresentChat } from "./presentChat";
 import { Category } from "@prisma/client";
+import { ScrollArea, ScrollBar } from "@/app/components/ui/scrollarea"
 
 export const AllChat = async () => {
 
     const { userId } = auth();
-    let allNotes:Category[]=[];
+    let allNotes: Category[] = [];
 
-    if (userId){
+    if (userId) {
         allNotes = await db.category.findMany(
             {
                 where: { userId },
                 orderBy: { updateAt: 'desc' }
             });
-    } 
+    }
 
     return (<>
-        <div className="mt-5">
+        <ScrollArea className="h-[490px] w-full mt-7">
+
             {allNotes.map((element) => (
                 <PresentChat category={element} key={element.id} />
             ))}
-        </div>
+
+            <ScrollBar orientation="vertical" />
+        </ScrollArea>
     </>);
 }

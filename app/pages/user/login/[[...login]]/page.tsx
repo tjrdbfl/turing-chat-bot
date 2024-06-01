@@ -12,7 +12,6 @@ const LoginPage = () => {
         <div className="flex bg-white h-screen w-full p-[20%] items-center justify-center">
             <div className="border-4 rounded-2xl p-[5%]">
                 <SignIn 
-                //fallbackRedirectUrl='/pages/dashboard'
                 appearance={{variables:{colorPrimary:"#0F172A"}}}
                 />
             </div>

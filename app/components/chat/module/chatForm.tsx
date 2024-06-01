@@ -1,7 +1,6 @@
 'use client';
 import { FormEvent, useContext, useEffect, useRef, useState } from "react";
 import ShareIcon from '@mui/icons-material/Share';
-import { getChatCategory } from "@/app/api/chat/category-api";
 import { Message, useChat } from 'ai/react';
 import { ScrollArea, ScrollBar } from "@/app/components/ui/scrollarea"
 import { Textarea } from "@/app/lib/textarea";
@@ -80,7 +79,7 @@ const ChatForm = ({ categoryId}
             return content;
 
         } else {
-          alert('채팅 내역 가져오기 실패하셨습니다. 다시 시도해주세요.');
+          //alert('채팅 내역 가져오기 실패하셨습니다. 다시 시도해주세요.');
         }
         
     }
