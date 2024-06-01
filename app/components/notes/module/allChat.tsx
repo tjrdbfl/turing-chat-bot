@@ -1,6 +1,6 @@
 import { db } from "@/app/lib/db";
 import { auth } from "@clerk/nextjs/server";
-import { PresentChat } from "../module/presentChat";
+import { PresentChat } from "./presentChat";
 import { Category } from "@prisma/client";
 
 export const AllChat = async () => {
@@ -15,8 +15,6 @@ export const AllChat = async () => {
                 orderBy: { updateAt: 'desc' }
             });
     } 
-
-    
 
     return (<>
         <div className="mt-5">

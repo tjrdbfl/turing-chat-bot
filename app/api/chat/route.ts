@@ -78,16 +78,3 @@ export async function POST(req: Request) {
 
 }
 
- // await fetch('/api/chat', {
-        //     method: 'POST',
-        //     headers: {
-        //       'Content-Type': 'application/json'
-        //     },
-        //     body: JSON.stringify({
-        //       question: messages.filter((m)=>m.role==='user').map((m) => m.content)[0],
-        //       content: messages.filter((m)=>m.role==='assistant').map((m)=>m.content)[0],
-        //       categoryId:id
-        //     })
-        //   })
-
-

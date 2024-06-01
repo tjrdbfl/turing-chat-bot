@@ -1,7 +1,4 @@
 'use client';
-import { motion } from "framer-motion";
-import AutoAwesomeIcon from '@mui/icons-material/AutoAwesome';
-import { Message } from "ai/react";
 import ChatAiIcon from "@/app/components/chat/module/chatAiIcon";
 
 const Answer=({id,isLoading,messages}:{id:number,isLoading:boolean,messages:string})=>{

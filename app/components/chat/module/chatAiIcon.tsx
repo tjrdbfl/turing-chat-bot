@@ -1,6 +1,5 @@
 import { motion } from "framer-motion";
 import AutoAwesomeIcon from '@mui/icons-material/AutoAwesome';
-import { Message } from "ai/react";
 
 const ChatAiIcon=({isLoading}:{isLoading:boolean})=>{
     return(<>

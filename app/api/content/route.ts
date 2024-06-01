@@ -40,3 +40,12 @@ export async function POST(req:Request){
     }
    
 }
+
+// export async function GET(req:Request){
+//     try{
+//         const body=await req.json(); 
+//         const {categoryId}=body.data;
+
+
+//     }
+// }

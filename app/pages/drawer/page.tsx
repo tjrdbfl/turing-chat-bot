@@ -1,4 +1,5 @@
-import { AllChat } from "@/app/components/notes/service/allChat";
+
+import { AllChat } from "@/app/components/notes/module/allChat";
 import TemporaryDrawer from "./drawer-list/page";
 import { Metadata, NextPage } from "next";
 

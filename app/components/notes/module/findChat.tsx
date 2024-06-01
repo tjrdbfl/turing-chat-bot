@@ -1,6 +1,6 @@
 import { db } from "@/app/lib/db";
 import { auth } from "@clerk/nextjs/server";
-import { PresentChat } from "../module/presentChat";
+import { PresentChat } from "./presentChat";
 
 export const UpdateChat = async () => {
 
