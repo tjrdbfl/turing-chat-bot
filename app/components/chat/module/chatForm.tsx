@@ -118,18 +118,18 @@ const ChatForm = ({ categoryId}
                                     {m.role === 'assistant' && (
                                         <div>
                                             <Answer id={parseInt(m.id)} isLoading={isLoading} messages={m.content} />
-                                            <div className="animate-slidein500 opacity-0 flex-row mb-[5%] mt-[2%]">
+                                            <div className="animate-slidein500 opacity-0 ml-5 flex-row mb-[5%] mt-[2%]">
                                                 <ChatCopyIcon />
-                                                <ShareIcon className="text-slate-400 h-11 w-11 p-[1%] hover:rounded-full hover:bg-slate-100 dark:hover:bg-zinc-700 " />
+                                                <ShareIcon className="text-slate-400 h-11 w-11 p-[1%] ml-5 hover:rounded-full hover:bg-slate-100 dark:hover:bg-zinc-700 " />
                                             </div>
                                         </div>
                                     )}
                                     {
                                         error && <>
-                                            <div className="animate-slidein500 opacity-0 mt-[5%]">
+                                            <div className="animate-slidein500 opacity-0 mt-[5%] ml-5">
                                                 <ChatAiIcon isLoading={true} />
                                             </div>
-                                            <h4 className="animate-slidein500 opacity-0 text-black text-[19px] mt-[2%] dark:text-[19px] dark:mt-[3%] px-[1.5%] w-full dark:text-white">
+                                            <h4 className="animate-slidein500 opacity-0 text-black text-[19px] mt-[2%] ml-5 dark:text-[19px] dark:mt-[3%] px-[1.5%] w-full dark:text-white">
                                                 오류가 발생했습니다. 다시 입력해주세요.
                                             </h4>
                                         </>

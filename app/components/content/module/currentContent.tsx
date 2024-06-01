@@ -22,9 +22,9 @@ const CurrentContent = ({id,question,answer}:
                 </div>
 
                 <div>
-                    <div key={id} className="animate-slidein500 mt-[5%]">
+                    <div key={id} className="animate-slidein500 mt-[5%] ml-1">
                         <ChatAiIcon isLoading={true} />
-                        <h4 className="leading-10 text-black text-[19px] mt-[2%] dark:text-xl dark:mt-[3%] px-[1.5%] w-full dark:text-white">
+                        <h4 className="leading-10 ml-1 text-black text-[19px] mt-[2%] dark:text-xl dark:mt-[3%] px-[1.5%] w-full dark:text-white">
                             {answer}
                         </h4>
                     </div>
