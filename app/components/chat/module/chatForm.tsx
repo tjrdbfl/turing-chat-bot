@@ -12,15 +12,18 @@ import ChatCopyIcon from "@/app/components/chat/module/chatCopyIcon";
 import Answer from "@/app/pages/chat/messages/page";
 import { useChatCategoryStore } from "../service/chat-zustand";
 import ChatCategory from "./chatCategory";
+import CurrentContent from "../../content/module/currentContent";
+import { Chat } from "@prisma/client";
 
 
-const ChatForm = ({ children, categoryId}
-    : { children: React.ReactNode, categoryId: number}) => {
+const ChatForm = ({ categoryId}
+    : { categoryId: number}) => {
 
-    const chatCategoryList: chatCategoryList[] = getChatCategory();
     const [isLoading, setIsLoading] = useState<boolean>(false);
 
     const {showCategory,setShowCategory,category}=useChatCategoryStore();
+
+    const [chatContent, setChatContent] = useState<Chat[]>([]);
 
     const { messages, input, handleInputChange, handleSubmit, error } = useChat({
 
@@ -58,6 +61,41 @@ const ChatForm = ({ children, categoryId}
         setIsLoading(true);
         setShowCategory(false);
     }
+    
+    const getContent = async () => {
+        
+        const response = await fetch('/api/content/getCurrentContent', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+            categoryId
+          })
+        })
+    
+        if (response.ok) {
+            setShowCategory(false);
+            const {content}=await response.json();
+            return content;
+
+        } else {
+          alert('채팅 내역 가져오기 실패하셨습니다. 다시 시도해주세요.');
+        }
+        
+    }
+
+    useEffect(()=>{
+        getContent().then(
+            (contentData)=>{
+                setChatContent(contentData);
+                if(contentData?.length===0){
+                    setShowCategory(true);
+                }
+            }
+        )
+
+    },[categoryId]);
 
     return (<>
         <form onSubmit={onSubmit} id="chat" className="chat_form_container">
@@ -66,7 +104,10 @@ const ChatForm = ({ children, categoryId}
                 <div>
                     <div className="flex flex-col justify-start">
                         <ScrollArea className="h-[700px] w-full">
-                            {/* {children} */}
+                            {chatContent.map((c)=>(
+                                <CurrentContent id={c.id} question={c.question||""} answer={c.answer||""}/>
+                            ))}
+                            
                             {messages.map(m => {
                                 return (<>
                                     {m.role === 'user' && (

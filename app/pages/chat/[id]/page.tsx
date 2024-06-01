@@ -9,9 +9,7 @@ const ChatRoomPage = ({ params }: { params: { id: string } }) => {
     return (
         <>
             <div className="h-[100%]">
-                <ChatForm categoryId={categoryId}>
-                    <CurrentContent categoryId={categoryId}/>
-                </ChatForm>
+                <ChatForm categoryId={categoryId}/>
             </div >
         </>);
 
