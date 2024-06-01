@@ -3,12 +3,13 @@ import { Metadata, NextPage } from 'next';
 import * as React from 'react';
 import ChatPage from '../chat/page';
 import TemporaryDrawer from '../drawer/page';
+import ChatRoomPage from '../chat/[id]/page';
 
 export const metadata:Metadata={
-  title:"Turing Chat - dashboard",
+  title:"Turing Chat - layout",
 }
 
-const Chat: NextPage = () => {
+const ChatLayout = ({children}:{children:React.ReactNode}) => {
   
   return (<>
     <div className="chat_container">
@@ -17,11 +18,11 @@ const Chat: NextPage = () => {
         <ChatHeader />
         <div className="chat_container_chat_window">
 
-        <ChatPage/>       
+        {children}     
         </div>
       </div>
     </div>
   </>
   );
 }
-export default Chat;
+export default ChatLayout;

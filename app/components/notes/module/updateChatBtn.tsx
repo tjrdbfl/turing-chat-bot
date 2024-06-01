@@ -1,5 +1,5 @@
 'use client';
-import { CreateChatSchema } from '@/app/schemas/chat/chatSchema';
+import { CreateCategorySchema } from '@/app/schemas/chat/chatSchema';
 import { zodResolver } from '@hookform/resolvers/zod';
 import CreateIcon from '@mui/icons-material/Create';
 import { Fragment, useState } from 'react';
@@ -11,7 +11,7 @@ export const UpdateChat = ({ category }: { category: Category }) => {
 
     const [open, setOpen] = useState<boolean>(false);
 
-    const onSubmit = async (values: CreateChatSchema) => {
+    const onSubmit = async (values: CreateCategorySchema) => {
         console.log('onSubmit');
         setOpen(false);
 

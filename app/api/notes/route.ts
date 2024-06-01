@@ -1,17 +1,17 @@
 import { db } from "@/app/lib/db";
-import { CreateChatSchema, deleteChatSchema, updateChatSchema } from "@/app/schemas/chat/chatSchema";
+import { CreateCategorySchema, DeleteCategorySchema, UpdateCategorySchema } from "@/app/schemas/chat/chatSchema";
 import { auth } from "@clerk/nextjs/server";
 import { DevBundlerService } from "next/dist/server/lib/dev-bundler-service";
 import { getEmbeddingForNote } from "../pinecone/chat-embedding";
 import { chatsIndex } from "@/app/lib/pinecone";
 import { getEmbedding } from "../pinecone/route";
 
-//new chat
+//new category
 export async function POST(req:Request){
     try{
 
         const body=await req.json(); 
-        const parseResult=CreateChatSchema.safeParse(body);
+        const parseResult=CreateCategorySchema.safeParse(body);
        
         if(!parseResult.success){
             console.error(parseResult.error);
@@ -62,7 +62,7 @@ export async function PUT(req:Request){
     try{
 
         const body=await req.json(); 
-        const parseResult=updateChatSchema.safeParse(body);
+        const parseResult=UpdateCategorySchema.safeParse(body);
        
         if(!parseResult.success){
             console.error(parseResult.error);
@@ -118,7 +118,7 @@ export async function DELETE(req:Request){
     try{
 
         const body=await req.json(); 
-        const parseResult=deleteChatSchema.safeParse(body);
+        const parseResult=DeleteCategorySchema.safeParse(body);
        
         if(!parseResult.success){
             console.error(parseResult.error);

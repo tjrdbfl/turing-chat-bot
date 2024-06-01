@@ -1,7 +1,7 @@
 import { ChatCategoryContext, ChatCategoryContextValue } from "@/app/components/chat/service/chat-context";
 import { useContext, useState } from "react";
 import { motion } from "framer-motion";
-import { getChatCategory } from "@/app/api/chat/chat-api";
+import { getChatCategory } from "@/app/api/chat/category-api";
 import FindCurrentUser from "@/app/components/user/service/currentUserInfo";
 
 const ChatCategory = () => {
@@ -29,9 +29,6 @@ const ChatCategory = () => {
                             onClick={() => { context.setCategory(element.id); }}
                         >
                             {element.title}
-                            {/* <p className="chat_catogry_text">
-                                {element.title}
-                            </p> */}
                         </motion.button>
                     ))}
                 </motion.div>

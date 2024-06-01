@@ -4,8 +4,8 @@ import { FormEvent, useContext, useEffect, useRef, useState } from "react";
 import ShareIcon from '@mui/icons-material/Share';
 import ContentCopyIcon from '@mui/icons-material/ContentCopy';
 import { ChatCategoryContext } from "@/app/components/chat/service/chat-context";
-import { getChatCategory } from "@/app/api/chat/chat-api";
-import { useChat } from 'ai/react';
+import { getChatCategory } from "@/app/api/chat/category-api";
+import { Message, useChat } from 'ai/react';
 import Answer from "../messages/page";
 import { ScrollArea, ScrollBar } from "@/app/components/ui/scrollarea"
 import ChatCategory from "../category/page";
@@ -13,56 +13,96 @@ import { Textarea } from "@/app/lib/textarea";
 import SendOutlinedIcon from '@mui/icons-material/SendOutlined';
 import ChatUserIcon from "@/app/components/chat/module/chatUserIcon";
 import ChatAiIcon from "@/app/components/chat/module/chatAiIcon";
+import ChatCopyIcon from "@/app/components/chat/module/chatCopyIcon";
 
-const ChatForm = () => {
+
+const ChatRoomPage = ({params}:{params:{id:string}}) => {
     const context = useContext(ChatCategoryContext);
 
     const chatCategoryList: chatCategoryList[] = getChatCategory();
+    const [isLoading,setIsLoading]=useState<boolean>(false);
+   
+    const categoryId=parseInt(params.id);
+    
+    const { messages,input,handleInputChange, handleSubmit,error } = useChat({
 
-    const { messages, input, handleInputChange, handleSubmit, isLoading, error } = useChat();
+        onFinish: async (messages:Message) => {
+            try {
+
+                const question=input;
+                const answer=messages.role==='assistant'? messages.content:'';
+                console.log("question: "+question);
+
+                console.log("answer: "+answer);
+
+                const response = await fetch('/api/content', {
+                    method: 'POST',
+                    headers: {
+                      'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        question,
+                        answer,
+                        categoryId
+                    })
+                  })
+            } catch (err) {
+                console.log(err);
+            } finally {
+                setIsLoading(false);
+            }
+        },
+    });
+
+    const [showCategory, setShowCategory] = useState<boolean>(true);
 
     function onSubmit(e: React.FormEvent<HTMLFormElement>) {
         e.preventDefault();
         handleSubmit(e);
+        setIsLoading(true);
+        setShowCategory(false);
     }
 
-    const inputRef = useRef<HTMLInputElement>(null);
 
     return (
         <>
             <div className="h-[100%]">
                 <form onSubmit={onSubmit} id="chat" className="chat_form_container">
-                    {context.category === 0 ? <ChatCategory /> :
+                    {showCategory ? <ChatCategory /> :
                         <div>
-
+                            
                             <div className="flex flex-col justify-start">
                                 <ScrollArea className="h-[700px] w-full">
 
-                                    <ChatUserIcon />
-                                    <h4 className="animate-slidein500 opacity-0 text-[19px] dark:text-white text-black ml-[2%] mt-[1%]">
-                                        {chatCategoryList.find((item) => item.id === context.category)?.userMsg}
-                                    </h4>
+                                    {showCategory &&
+                                        <div>
+                                            <ChatUserIcon />
+                                            <h4 className="animate-slidein500 opacity-0 text-[19px] dark:text-white text-black ml-[2%] mt-[1%]">
+                                                {chatCategoryList.find((item) => item.id === context.category)?.userMsg}
+                                            </h4>
 
-                                    <div className="animate-slidein500 opacity-0 mt-[5%]">
-                                        <ChatAiIcon isLoading={true} />
-                                    </div>
-                                    <h4 className="animate-slidein500 opacity-0 text-black text-[19px] mt-[2%] dark:text-[19px] dark:mt-[3%] px-[1.5%] w-full dark:text-white">
-                                        {chatCategoryList.find((item) => item.id === context.category)?.aiMsg}
-                                    </h4>
+                                            <div className="animate-slidein500 opacity-0 mt-[5%]">
+                                                <ChatAiIcon isLoading={isLoading} />
+                                            </div>
+                                            <h4 className="animate-slidein500 opacity-0 text-black text-[19px] mt-[2%] dark:text-[19px] dark:mt-[3%] px-[1.5%] w-full dark:text-white">
+                                                {chatCategoryList.find((item) => item.id === context.category)?.aiMsg}
+                                            </h4>
+                                        </div>
+                                    }
 
-                                    {messages.map(m => (
-                                        <>
+                                    {messages.map(m => {
+                                        return (<>
                                             {m.role === 'user' && (
-                                                <div className="flex flex-col">
+                                                <div className="animate-slidein500 opacity-0 flex flex-col">
                                                     <ChatUserIcon />
-                                                    <p className="text-xl ml-5 text-black dark:text-white">{m.content}</p>
+                                                    <p className="text-xl ml-5 mt-[2%] text-black dark:text-white">{m.content}</p>
                                                 </div>
                                             )}
                                             {m.role === 'assistant' && (
                                                 <div>
                                                     <Answer id={parseInt(m.id)} isLoading={isLoading} messages={m.content} />
-                                                    <div className="flex-row mb-[5%] mt-[2%]">
-                                                        <ContentCopyIcon className="text-slate-400 ml-1 h-11 w-11 p-[1%] hover:rounded-full hover:bg-slate-100 dark:hover:bg-zinc-700 " />
+                                                    <div className="animate-slidein500 opacity-0 flex-row mb-[5%] mt-[2%]">
+                                                        <ChatCopyIcon />
                                                         <ShareIcon className="text-slate-400 h-11 w-11 p-[1%] hover:rounded-full hover:bg-slate-100 dark:hover:bg-zinc-700 " />
                                                     </div>
                                                 </div>
@@ -77,9 +117,9 @@ const ChatForm = () => {
                                                     </h4>
                                                 </>
                                             }
-                                        </>
+                                        </>);
 
-                                    ))}
+                                    })}
                                     <ScrollBar orientation="vertical" />
                                 </ScrollArea>
                             </div>
@@ -100,7 +140,7 @@ const ChatForm = () => {
                             aria-label="maximum height"
                         />
                         <button type="submit"
-                            disabled={isLoading}
+                        disabled={isLoading}
                             className="button_TelegramIcon"
                         >
                             <SendOutlinedIcon
@@ -112,8 +152,7 @@ const ChatForm = () => {
             </div >
 
 
-        </>
+        </>);
 
-    );
 }
-export default ChatForm;
+export default ChatRoomPage;

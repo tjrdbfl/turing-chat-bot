@@ -10,7 +10,7 @@ const Answer=({id,isLoading,messages}:{id:number,isLoading:boolean,messages:stri
         <>
         <div key={id} className="mt-[5%]">
         <ChatAiIcon isLoading={isLoading}/>
-            <h4 className="text-black text-[19px] mt-[2%] dark:text-xl dark:mt-[3%] px-[1.5%] w-full dark:text-white">
+            <h4 className="leading-10 text-black text-[19px] mt-[2%] dark:text-xl dark:mt-[3%] px-[1.5%] w-full dark:text-white">
             {messages}
             </h4>
             </div>
@@ -20,16 +20,3 @@ const Answer=({id,isLoading,messages}:{id:number,isLoading:boolean,messages:stri
  
 export default Answer;
 
-// interface Message{
-//     role:string;
-//     content:string;
-// }
-// const ChatMessage=({message:{role,content}}:{
-//     message:Message
-// })=>{
-//     return (<>
-//     <div>{role}</div>
-//     <div>{content}</div>
-//     </>);
-// }
-// export default ChatMessage;

@@ -32,6 +32,11 @@ export async function POST(req: Request) {
     );
 
     const {userId}=auth();
+
+    
+    if(!userId){
+      return Response.json({error:"권한이 없는 사용자입니다."},{status:401});
+  }
     
     const vectorQueryResponse=await chatsIndex.query({
       vector:embedding,
@@ -45,7 +50,7 @@ export async function POST(req: Request) {
       }
     }});
       
-    console.log('Relevant chats found',relevantChats);
+    //console.log('Relevant chats found',relevantChats);
     
     const systemMessage:ChatCompletionSystemMessageParam={
       role:"system",
@@ -57,10 +62,12 @@ export async function POST(req: Request) {
     const response = await openai.chat.completions.create({
       model: 'gpt-3.5-turbo',
       stream: true,
-      messages:[systemMessage, ...messagesTruncated]
+      messages:[systemMessage, ...messagesTruncated],
     })
 
+  
     const stream = OpenAIStream(response);
+
     return new StreamingTextResponse(stream);
     
   } catch (error) {
@@ -70,3 +77,17 @@ export async function POST(req: Request) {
   }
 
 }
+
+ // await fetch('/api/chat', {
+        //     method: 'POST',
+        //     headers: {
+        //       'Content-Type': 'application/json'
+        //     },
+        //     body: JSON.stringify({
+        //       question: messages.filter((m)=>m.role==='user').map((m) => m.content)[0],
+        //       content: messages.filter((m)=>m.role==='assistant').map((m)=>m.content)[0],
+        //       categoryId:id
+        //     })
+        //   })
+
+

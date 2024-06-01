@@ -2,7 +2,7 @@
 import { ChatCategoryContext, ChatCategoryContextValue } from "@/app/components/chat/service/chat-context";
 import { useContext, useState } from "react";
 import { motion } from "framer-motion";
-import { getChatCategory } from "@/app/api/chat/chat-api";
+import { getChatCategory } from "@/app/api/chat/category-api";
 import { Session } from "next-auth";
 
 

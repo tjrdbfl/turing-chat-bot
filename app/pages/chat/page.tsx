@@ -1,7 +1,7 @@
 'use client';
 import { ChatCategoryContext } from "@/app/components/chat/service/chat-context";
 import { useState } from "react";
-import ChatForm from "./form/page";
+import ChatRoomPage from "./[id]/page";
 
 const ChatPage=()=>{
     const [category,setCategory]=useState(0);
@@ -9,7 +9,7 @@ const ChatPage=()=>{
     return (
         <>
         <ChatCategoryContext.Provider value={{category,setCategory}}>
-        <ChatForm/>
+        {/* <ChatRoomPage id={14}/> */}
         </ChatCategoryContext.Provider>
         </>
     );
