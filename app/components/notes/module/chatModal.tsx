@@ -17,6 +17,8 @@ export const ChatModal = ({ open, setOpen, onSubmit, category }
         , category?: Category
     }) => {
    
+
+
     const form = useForm<CreateCategorySchema>(
         {
             resolver: zodResolver(CreateCategorySchema),
@@ -26,6 +28,7 @@ export const ChatModal = ({ open, setOpen, onSubmit, category }
             }
         }
     );
+
 
     return (<>
         <Modal
@@ -98,7 +101,6 @@ export const ChatModal = ({ open, setOpen, onSubmit, category }
 
                 </Form>
             </div>
-
         </Modal>
     </>);
 }

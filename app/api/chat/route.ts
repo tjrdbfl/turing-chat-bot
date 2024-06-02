@@ -19,7 +19,6 @@ export async function POST(req: Request) {
 
     const { messages } = await req.json();
     
-    //채팅 기록 저장을 위한(ai && user)
     // vector embedding이 검색할 수 있는 범위 좁히기
     const messagesTruncated=messages.slice(-6);
     
@@ -31,13 +30,18 @@ export async function POST(req: Request) {
       messagesTruncated.map((message:Message)=>message.content).join("\n")
     );
 
+    //권한 확인 
     const {userId}=auth();
 
     
     if(!userId){
       return Response.json({error:"권한이 없는 사용자입니다."},{status:401});
   }
-    
+   
+    //생성된 벡터 임베딩을 기반으로 관련 채팅을 검색하기 위한 PineCone을 사용
+    //vector: 채팅 컨텍스트를 나타내는 생성된 embedding
+    //topK: 가장 관련성이 높은 상위 1개의 채팅으로 결과를 반환
+    //filter: 현재 사용자가 소유한 채팅으로 결과를 필터링 
     const vectorQueryResponse=await chatsIndex.query({
       vector:embedding,
       topK:1,
@@ -49,8 +53,6 @@ export async function POST(req: Request) {
         in:vectorQueryResponse.matches.map((match)=>parseInt(match.id))
       }
     }});
-      
-    //console.log('Relevant chats found',relevantChats);
     
     const systemMessage:ChatCompletionSystemMessageParam={
       role:"system",

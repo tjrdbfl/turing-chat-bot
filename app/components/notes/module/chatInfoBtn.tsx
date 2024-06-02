@@ -1,10 +1,8 @@
 'use client';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
-import { Box, Modal, Popover } from '@mui/material';
+import { Popover } from '@mui/material';
 import { useState, MouseEvent } from 'react';
-import { UpdateChat } from './updateChatBtn';
 import { DeleteChat } from './deleteChat';
-import { db } from '@/app/lib/db';
 import { Category } from '@prisma/client';
 
 export const ChatInfoBtn = ({ category }: { category: Category }) => {
@@ -44,7 +42,6 @@ export const ChatInfoBtn = ({ category }: { category: Category }) => {
         horizontal: 'left',
       }}
     >
-      <UpdateChat category={category}/>
       <DeleteChat id={category.id}/>
     </Popover>
   </>);

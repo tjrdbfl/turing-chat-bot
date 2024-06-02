@@ -1,12 +1,9 @@
 'use client';
 import ChatUserIcon from "../../chat/module/chatUserIcon";
-import ChatCopyIcon from "../../chat/module/chatCopyIcon";
-import ShareIcon from '@mui/icons-material/Share';
+import ChatCopyBtn from "../../chat/module/chatCopyBtn";
 import ChatAiIcon from "../../chat/module/chatAiIcon";
-import { db } from "@/app/lib/db";
-import { auth } from "@clerk/nextjs/server";
 import { useChatCategoryStore } from "../../chat/service/chat-zustand";
-import { useEffect } from "react";
+import ChatShareBtn from "../../chat/module/chatShareBtn";
 
 const CurrentContent = ({id,question,answer}:
   {id:number,question:string,answer:string}) => {
@@ -30,8 +27,8 @@ const CurrentContent = ({id,question,answer}:
                     </div>
                 
                 <div className="animate-slidein500 opacity-0 flex-row mb-[5%] mt-[2%]">
-                    <ChatCopyIcon />
-                    <ShareIcon className="text-slate-400 h-11 w-11 p-[1%] hover:rounded-full hover:bg-slate-100 dark:hover:bg-zinc-700 " />
+                    <ChatCopyBtn textToCopy={answer} />
+                    <ChatShareBtn/>
                 </div>
             </div >
             </>)

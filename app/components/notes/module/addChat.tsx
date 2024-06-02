@@ -5,20 +5,21 @@ import { CreateCategorySchema } from '@/app/schemas/chat/chatSchema';
 import { useState, Fragment } from 'react';
 import { ChatModal } from './chatModal';
 import { useRouter } from 'next/navigation';
-
-export const ekjkek = () => {
-
-}
+import { auth, getAuth } from '@clerk/nextjs/server';
+import FindCurrentUser from '../../user/service/currentUserInfo';
+import { useChatLoadingStore } from '../../chat/service/chat-zustand';
 
 
 export const AddChatBtn = () => {
 
   const [open, setOpen] = useState<boolean>(false);
-  const router = useRouter();
-
+  const {setLoading}=useChatLoadingStore();
+  const router=useRouter();
+  
   const onSubmit = async (values: CreateCategorySchema) => {
     console.log('onSubmit');
     setOpen(false);
+    setLoading(true);
 
     const response = await fetch('/api/notes', {
       method: 'POST',
@@ -28,7 +29,8 @@ export const AddChatBtn = () => {
       body: JSON.stringify({
         title: values.title,
         content: values.content,
-      })
+      }),
+      cache:'no-store'
     })
 
     if (response.ok) {
@@ -41,6 +43,8 @@ export const AddChatBtn = () => {
     } else {
       alert('채팅창 생성 실패하셨습니다. 다시 시도해주세요.');
     }
+
+    setLoading(false);
   }
 
 

@@ -19,9 +19,9 @@ export async function POST(req:Request){
         }
 
         const {title,content}=parseResult.data;
-        
-        const {userId}=auth();
 
+        const {userId}=auth();
+        
         if(!userId){
             return Response.json({error:"권한이 없는 사용자입니다."},{status:401});
         }
@@ -61,6 +61,7 @@ export async function POST(req:Request){
 export async function PUT(req:Request){
     try{
 
+        console.log("PUT");
         const body=await req.json(); 
         const parseResult=UpdateCategorySchema.safeParse(body);
        

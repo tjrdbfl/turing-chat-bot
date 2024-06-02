@@ -40,7 +40,6 @@ export default function TemporaryDrawer({ children }: { children: ReactNode }) {
                     dark:hover:bg-zinc-700">
                     <DensityMediumIcon className='dark:text-white'/>
                 </button>
-
                 <div className='w-[300px] dark:bg-zinc-800' role="presentation">
                     <AddChatBtn />
                     

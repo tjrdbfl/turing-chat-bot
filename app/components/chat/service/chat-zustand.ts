@@ -14,3 +14,13 @@ export const useChatCategoryStore=create<ChatCategoryStore>()((set)=>({
     setShowCategory: (show: boolean) => set((state) => ({ ...state, showCategory: show })),
   
 }))
+
+type ChatLoadingStore={
+    loading:boolean,
+    setLoading:(loading:boolean)=>void
+}
+
+export const useChatLoadingStore=create<ChatLoadingStore>()((set)=>({
+    loading:false,
+    setLoading: (newLoading: boolean) => set((state) => ({ ...state, loading: newLoading })),
+}))

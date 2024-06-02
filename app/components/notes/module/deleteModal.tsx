@@ -1,5 +1,6 @@
 'use client';
 import Modal from '@mui/material/Modal';
+import { useChatLoadingStore } from '../../chat/service/chat-zustand';
 
 export const DeleteModal = ({ open, setOpen,id }:
     {
@@ -9,8 +10,12 @@ export const DeleteModal = ({ open, setOpen,id }:
     }
 ) => {
 
+    const {setLoading}=useChatLoadingStore();
+    
     const onClick=async ()=>{
+        setLoading(true);
         setOpen(false);
+        
         const response = await fetch('/api/notes', {
           method: 'DELETE',
           headers: {
@@ -19,6 +24,7 @@ export const DeleteModal = ({ open, setOpen,id }:
           body: JSON.stringify({
             id:id
           })
+          ,cache:'no-store'
         })
     
         if (response.ok) {
@@ -26,8 +32,8 @@ export const DeleteModal = ({ open, setOpen,id }:
         } else {
           alert('채팅창 삭제 실패하셨습니다. 다시 시도해주세요.');
         }
-    
         window.location.reload();
+        setLoading(false);
     }
 
     return (<>

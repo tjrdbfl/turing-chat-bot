@@ -1,4 +1,3 @@
-'use client';
 import ChatAiIcon from "@/app/components/chat/module/chatAiIcon";
 
 const Answer=({id,isLoading,messages}:{id:number,isLoading:boolean,messages:string})=>{

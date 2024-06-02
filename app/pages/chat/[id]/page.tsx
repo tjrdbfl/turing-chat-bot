@@ -1,6 +1,4 @@
 import ChatForm from "@/app/components/chat/module/chatForm";
-import CurrentContent from "@/app/components/content/module/currentContent";
-
 
 const ChatRoomPage = ({ params }: { params: { id: string } }) => {
     

@@ -1,18 +1,19 @@
 'use client';
-import { FormEvent, useContext, useEffect, useRef, useState } from "react";
-import ShareIcon from '@mui/icons-material/Share';
+import { useEffect, useRef, useState } from "react";
 import { Message, useChat } from 'ai/react';
 import { ScrollArea, ScrollBar } from "@/app/components/ui/scrollarea"
 import { Textarea } from "@/app/lib/textarea";
 import SendOutlinedIcon from '@mui/icons-material/SendOutlined';
 import ChatUserIcon from "@/app/components/chat/module/chatUserIcon";
 import ChatAiIcon from "@/app/components/chat/module/chatAiIcon";
-import ChatCopyIcon from "@/app/components/chat/module/chatCopyIcon";
-import Answer from "@/app/pages/chat/messages/page";
-import { useChatCategoryStore } from "../service/chat-zustand";
+import ChatCopyBtn from "@/app/components/chat/module/chatCopyBtn";
+import { useChatCategoryStore, useChatLoadingStore } from "../service/chat-zustand";
 import ChatCategory from "./chatCategory";
 import CurrentContent from "../../content/module/currentContent";
 import { Chat } from "@prisma/client";
+import ChatShareBtn from "./chatShareBtn";
+import Answer from "./chatAnswer";
+import LoadingPage from "@/app/pages/control/loading/page";
 
 
 const ChatForm = ({ categoryId}
@@ -20,7 +21,7 @@ const ChatForm = ({ categoryId}
 
     const [isLoading, setIsLoading] = useState<boolean>(false);
 
-    const {showCategory,setShowCategory,category}=useChatCategoryStore();
+    const {showCategory,setShowCategory}=useChatCategoryStore();
 
     const [chatContent, setChatContent] = useState<Chat[]>([]);
 
@@ -45,6 +46,7 @@ const ChatForm = ({ categoryId}
                         answer,
                         categoryId
                     })
+                    ,cache:'no-store'
                 })
             } catch (err) {
                 console.log(err);
@@ -60,9 +62,11 @@ const ChatForm = ({ categoryId}
         setIsLoading(true);
         setShowCategory(false);
     }
-    
+
+    const {loading,setLoading}=useChatLoadingStore();
+
     const getContent = async () => {
-        
+        setLoading(true);
         const response = await fetch('/api/content/getCurrentContent', {
           method: 'POST',
           headers: {
@@ -71,6 +75,7 @@ const ChatForm = ({ categoryId}
           body: JSON.stringify({
             categoryId
           })
+          ,cache:'no-store'
         })
     
         if (response.ok) {
@@ -78,8 +83,6 @@ const ChatForm = ({ categoryId}
             const {content}=await response.json();
             return content;
 
-        } else {
-          //alert('채팅 내역 가져오기 실패하셨습니다. 다시 시도해주세요.');
         }
         
     }
@@ -88,6 +91,7 @@ const ChatForm = ({ categoryId}
         getContent().then(
             (contentData)=>{
                 setChatContent(contentData);
+                setLoading(false);
                 if(contentData?.length===0){
                     setShowCategory(true);
                 }
@@ -97,7 +101,7 @@ const ChatForm = ({ categoryId}
     },[categoryId]);
 
     return (<>
-        <form onSubmit={onSubmit} id="chat" className="chat_form_container">
+        {loading ? <LoadingPage/> : <form onSubmit={onSubmit} id="chat" className="chat_form_container">
             {showCategory ? <ChatCategory /> :
                 
                 <div>
@@ -119,8 +123,8 @@ const ChatForm = ({ categoryId}
                                         <div>
                                             <Answer id={parseInt(m.id)} isLoading={isLoading} messages={m.content} />
                                             <div className="animate-slidein500 opacity-0 ml-5 flex-row mb-[5%] mt-[2%]">
-                                                <ChatCopyIcon />
-                                                <ShareIcon className="text-slate-400 h-11 w-11 p-[1%] ml-5 hover:rounded-full hover:bg-slate-100 dark:hover:bg-zinc-700 " />
+                                                <ChatCopyBtn textToCopy={m.content} />
+                                                <ChatShareBtn/>
                                             </div>
                                         </div>
                                     )}
@@ -149,7 +153,7 @@ const ChatForm = ({ categoryId}
             overflow-hidden">
                 <Textarea
                     id="question"
-                    className="w-[100%] h-[100%] bg-slate-50 text-black dark:bg-zinc-800 dark:text-white"
+                    className="w-[100%] h-[100%] leading-8 bg-slate-50 text-black dark:bg-zinc-800 dark:text-white"
                     value={input}
                     onChange={handleInputChange}
                     placeholder="여기에 프롬프트 입력..."
@@ -165,7 +169,7 @@ const ChatForm = ({ categoryId}
                     />
                 </button>
             </div>
-        </form >
+        </form >}
 
     </>);
 }
