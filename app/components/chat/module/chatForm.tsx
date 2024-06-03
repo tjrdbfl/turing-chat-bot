@@ -161,7 +161,6 @@ const ChatForm = ({ categoryId}
                     aria-label="maximum height"
                 />
                 <button type="submit"
-                    disabled={isLoading}
                     className="button_TelegramIcon"
                 >
                     <SendOutlinedIcon

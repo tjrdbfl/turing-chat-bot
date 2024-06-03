@@ -32,7 +32,7 @@ const ChatCopyBtn: FC<CopyButtonProps> = ({ textToCopy }) => {
             onMouseEnter={handlePopoverOpen}
             onMouseLeave={handlePopoverClose}
         >
-            <ContentCopyIcon className="text-slate-400 ml-3 h-11 w-11 p-[9px] hover:rounded-full hover:bg-slate-100 dark:hover:bg-zinc-600 " />
+            <ContentCopyIcon className="text-slate-400 h-11 w-11 ml-1 p-[9px] hover:rounded-full hover:bg-slate-100 dark:hover:bg-zinc-600 " />
         </button>
 
         <Popover

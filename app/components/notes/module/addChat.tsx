@@ -40,6 +40,7 @@ export const AddChatBtn = () => {
       const newChat = responseData.newChat;
       const chatId = newChat.id;
       router.push(`/pages/chat/${chatId}`);
+      router.refresh();
     } else {
       alert('채팅창 생성 실패하셨습니다. 다시 시도해주세요.');
     }
