@@ -10,8 +10,3 @@ export type ChatCategoryList = {
     aiMsg: string;
     userMsg: string;
 }
-
-export type cardVariantsType = {
-    offscreen: { y: number };
-    onscreen: { y: number, rotate: number, transition: { type: string, bound: number, duration: number } };
-}

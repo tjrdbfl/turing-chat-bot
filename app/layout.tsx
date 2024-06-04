@@ -22,8 +22,8 @@ export default function RootLayout({
   return (
     
     <ClerkProvider
-    signInFallbackRedirectUrl="/pages/chat"
-    signUpFallbackRedirectUrl="/pages/chat"
+    signInFallbackRedirectUrl="/chat"
+    signUpFallbackRedirectUrl="/chat"
     >
     <html lang="en">
       <body className="h-screen w-screen">

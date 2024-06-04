@@ -30,7 +30,7 @@ const Home: NextPage = () => {
   , automate tasks, and witness the future of AI!
   </div>
   <Link 
-   href={'/pages/user/login'} 
+   href={'/sign-in'} 
   className="lg:hidden animate-slidein900 border-2 flex items-center justify-center opacity-0 w-[40%] h-[1%] mt-[5%] ml-[5%] text-white bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:outline-none dark:focus:ring-blue-800 font-medium rounded-xl text-3xl px-[2%] py-[4%] text-center me-2 mb-2
   ">
 Getting started...

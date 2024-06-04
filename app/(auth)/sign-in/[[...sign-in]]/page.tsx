@@ -1,10 +1,9 @@
 import supabase from "@/app/lib/supabaseClient";
-import { SignIn, useAuth } from "@clerk/nextjs";
-
+import { SignIn } from "@clerk/nextjs";
 import { Metadata } from "next";
 
 export const metadata:Metadata={
-    title:"Turing Chat - login"
+    title:"Turing Chat - sign-in"
 }
 const LoginPage = () => {
     

@@ -9,7 +9,7 @@ import SignOut from '@/app/components/user/module/signOut';
 import { AddChatBtn } from '@/app/components/notes/module/addChat';
 import { CurrentTheme } from '@/app/components/drawer/service/currentTheme';
 
-export default function TemporaryDrawer({ children }: { children: ReactNode }) {
+export default function DrawerList({ children }: { children: ReactNode }) {
 
     const [open, setOpen] = useState(false);
     const toggleDrawer = (newOpen: boolean) => () => {

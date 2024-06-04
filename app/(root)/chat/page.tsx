@@ -1,6 +1,12 @@
 import { createChat } from '@/app/components/chat/service/chat-api';
 import { redirect } from 'next/navigation';
 
+import { Metadata } from "next";
+
+export const metadata:Metadata={
+    title:"Turing Chat - ChatPage"
+}
+
 const ChatPage = async () => {
   let chatId;
   
@@ -16,7 +22,7 @@ const ChatPage = async () => {
   }
 
   // Redirect to the new chat page
-  redirect(`/pages/chat/${chatId}`);
+  redirect(`/chat/${chatId}`);
 
 };
 
