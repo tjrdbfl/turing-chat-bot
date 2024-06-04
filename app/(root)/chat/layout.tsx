@@ -1,4 +1,5 @@
-import ChatHeader from '@/app/components/chat/module/chatHeader';
+
+import ChatHeader from '@/app/components/chat/ChatHeader';
 import Drawer from '@/app/containers/drawer/Drawer';
 import { Metadata } from 'next';
 import * as React from 'react';

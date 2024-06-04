@@ -1,4 +1,4 @@
-import { AllChat } from "@/app/components/notes/module/allChat";
+import { AllChat } from "@/app/containers/chat/AllChat";
 import DrawerList from "./DrawerList";
 
 const Drawer=()=>{

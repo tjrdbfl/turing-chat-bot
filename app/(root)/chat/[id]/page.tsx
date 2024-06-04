@@ -1,4 +1,4 @@
-import ChatForm from "@/app/components/chat/module/chatForm";
+import ChatForm from "@/app/containers/chat/ChatForm";
 
 
 import { Metadata } from "next";

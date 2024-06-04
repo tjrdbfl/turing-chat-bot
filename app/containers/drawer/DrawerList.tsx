@@ -2,12 +2,12 @@
 import Drawer from '@mui/material/Drawer';
 import { ReactNode, useState } from 'react';
 import DensityMediumIcon from '@mui/icons-material/DensityMedium';
-import { ThemeToggleBtn } from '@/app/components/drawer/module/themeToggleBtn';
-import Setting from '@/app/components/drawer/module/settings';
-import Help from '@/app/components/drawer/module/help';
-import SignOut from '@/app/components/user/module/signOut';
-import { AddChatBtn } from '@/app/components/notes/module/addChat';
-import { CurrentTheme } from '@/app/components/drawer/service/currentTheme';
+import { ThemeToggleBtn } from '@/app/components/theme/ThemeToggleBtn';
+import Setting from '@/app/components/drawer/Settings';
+import Help from '@/app/components/drawer/Help';
+import SignOut from '@/app/components/auth/SignOut';
+import { ChatAddBtn } from '@/app/components/chat/ChatAddBtn';
+import { CurrentTheme } from '@/app/services/theme';
 
 export default function DrawerList({ children }: { children: ReactNode }) {
 
@@ -41,7 +41,7 @@ export default function DrawerList({ children }: { children: ReactNode }) {
                     <DensityMediumIcon className='dark:text-white'/>
                 </button>
                 <div className='w-[300px] dark:bg-zinc-800' role="presentation">
-                    <AddChatBtn />
+                    <ChatAddBtn />
                     
                     {children}
                     <div className='fixed bottom-0 dark:bg-zinc-800'>

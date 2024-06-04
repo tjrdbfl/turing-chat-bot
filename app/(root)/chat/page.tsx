@@ -1,7 +1,7 @@
-import { createChat } from '@/app/components/chat/service/chat-api';
 import { redirect } from 'next/navigation';
 
 import { Metadata } from "next";
+import { CreateChat } from '@/app/services/chat.api';
 
 export const metadata:Metadata={
     title:"Turing Chat - ChatPage"
@@ -11,7 +11,7 @@ const ChatPage = async () => {
   let chatId;
   
   try {
-    chatId = await createChat();
+    chatId = await CreateChat();
   } catch (error) {
     console.error('Error creating chat:', error);
     return (
