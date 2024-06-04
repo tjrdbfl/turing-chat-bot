@@ -4,10 +4,11 @@ import FindCurrentUser from "@/app/components/user/service/currentUserInfo";
 import { useChatCategoryStore } from "@/app/components/chat/service/chat-zustand";
 import ChatUserIcon from "./chatUserIcon";
 import ChatAiIcon from "./chatAiIcon";
+import { ChatCategoryList } from "@/app/types/chat";
 
 const ChatCategory = () => {
 
-    const chatCategoryList: chatCategoryList[] = getChatCategory();
+    const chatCategoryList: ChatCategoryList[] = getChatCategory();
 
     const { category, setCategory, showCategory, setShowCategory } = useChatCategoryStore();
 

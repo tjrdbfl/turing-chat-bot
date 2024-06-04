@@ -41,7 +41,7 @@ Getting started...
   <div className='h-full w-[60%] flex items-center'>
   <div className='h-full w-full px-[17%] md:py-[0%] md:px-[5%] py-[7%]'>
   <div className='animate-slidein300 opacity-0 box relative lg:w-[700px] lg:h-[700px] md:w-[350px] md:h-[350px] md:p-[3%] p-[5%] overflow-hidden'>
-  <img src="/main-page-icon.jpg"
+  <img src="/images/main/main-page-icon.jpg"
   alt="AI generated art, isometric"
   className="animate-slidein300 opacity-0 rounded-3xl h-[100%]
   "

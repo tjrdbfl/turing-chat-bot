@@ -6,11 +6,9 @@ import { getEmbedding } from '../pinecone/route';
 import { auth } from '@clerk/nextjs/server';
 import { chatsIndex } from '@/app/lib/pinecone';
 import { db } from '@/app/lib/db';
+import { Message } from '@/app/types/chat';
 
-type Message={
-  role:string;
-  content:string;
-}
+
 export async function POST(req: Request) {
   try {
     if (!process.env.OPENAI_API_KEY) {

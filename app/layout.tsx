@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
-import "./globals.css";
+import "@/app/styles/globals.css";
+import "@/app/styles/variable.css";
+import "@/app/styles/animations.css"
 import ThemeProviders from "./components/drawer/service/themeProvider";
 import {ClerkProvider} from "@clerk/nextjs";
 
